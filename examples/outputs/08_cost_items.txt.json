@@ -1,0 +1,839 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "success",
+  "source": {
+    "identifier": "08_cost_items.txt",
+    "filename": "08_cost_items.txt",
+    "sha256": "60e5bdb934bb365585fd2ed5bc175f810adeabdb71941fd3a24c7e179257bb38",
+    "media_type": "text/plain",
+    "byte_count": 424,
+    "metadata": {},
+    "pages": [
+      {
+        "page": null,
+        "raw_text": "SYNTHETIC TEST DOCUMENT\nCHANGE ORDER\nChange Order Number: CO-008\nProject: Science Lab Fitout\nDescription: Add power and controls for two laboratory exhaust fans.\nDescription | Qty | Unit | Unit Price | Amount\nElectrical labor | 20 | hours | 85.00 | USD 1,700.00\nControl cable | 200 | feet | 4.00 | USD 800.00\nFan disconnects | 2 | each | 250.00 | USD 500.00\nTotal Change Amount: USD 3,000.00\nSchedule Impact: 1 calendar day\n",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT\nCHANGE ORDER\nChange Order Number: CO-008\nProject: Science Lab Fitout\nDescription: Add power and controls for two laboratory exhaust fans.\nDescription | Qty | Unit | Unit Price | Amount\nElectrical labor | 20 | hours | 85.00 | USD 1,700.00\nControl cable | 200 | feet | 4.00 | USD 800.00\nFan disconnects | 2 | each | 250.00 | USD 500.00\nTotal Change Amount: USD 3,000.00\nSchedule Impact: 1 calendar day",
+        "native_text": null,
+        "text_origin": "text",
+        "ocr_quality": null
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": "CO-008",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 37,
+          "char_end": 65,
+          "text": "Change Order Number: CO-008\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": "Science Lab Fitout",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 65,
+          "char_end": 93,
+          "text": "Project: Science Lab Fitout\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": "CHANGE ORDER",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 2,
+          "line_end": 2,
+          "char_start": 24,
+          "char_end": 37,
+          "text": "CHANGE ORDER\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "title",
+      "validation": "valid",
+      "signals": [
+        "title_base=0.86",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revision": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "contractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "owner": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "description": {
+      "value": "Add power and controls for two laboratory exhaust fans.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 93,
+          "char_end": 162,
+          "text": "Description: Add power and controls for two laboratory exhaust fans.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "reason": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": 3000.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 358,
+          "char_end": 392,
+          "text": "Total Change Amount: USD 3,000.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "requested_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": "stated_total",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 358,
+          "char_end": 392,
+          "text": "Total Change Amount: USD 3,000.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "amount_role_in_source"
+      ],
+      "alternatives": []
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 358,
+          "char_end": 392,
+          "text": "Total Change Amount: USD 3,000.00\n",
+          "text_origin": "text"
+        },
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 209,
+          "char_end": 262,
+          "text": "Electrical labor | 20 | hours | 85.00 | USD 1,700.00\n",
+          "text_origin": "text"
+        },
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 262,
+          "char_end": 309,
+          "text": "Control cable | 200 | feet | 4.00 | USD 800.00\n",
+          "text_origin": "text"
+        },
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 309,
+          "char_end": 358,
+          "text": "Fan disconnects | 2 | each | 250.00 | USD 500.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "independent_method_agreement=+0.03"
+      ],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": [
+        {
+          "description": {
+            "value": "Electrical labor",
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 7,
+                "line_end": 7,
+                "char_start": 209,
+                "char_end": 262,
+                "text": "Electrical labor | 20 | hours | 85.00 | USD 1,700.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "quantity": {
+            "value": 20,
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 7,
+                "line_end": 7,
+                "char_start": 209,
+                "char_end": 262,
+                "text": "Electrical labor | 20 | hours | 85.00 | USD 1,700.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "unit": {
+            "value": "hours",
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 7,
+                "line_end": 7,
+                "char_start": 209,
+                "char_end": 262,
+                "text": "Electrical labor | 20 | hours | 85.00 | USD 1,700.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "unit_price": {
+            "value": 85.00,
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 7,
+                "line_end": 7,
+                "char_start": 209,
+                "char_end": 262,
+                "text": "Electrical labor | 20 | hours | 85.00 | USD 1,700.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "amount": {
+            "value": 1700.00,
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 7,
+                "line_end": 7,
+                "char_start": 209,
+                "char_end": 262,
+                "text": "Electrical labor | 20 | hours | 85.00 | USD 1,700.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          }
+        },
+        {
+          "description": {
+            "value": "Control cable",
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 8,
+                "line_end": 8,
+                "char_start": 262,
+                "char_end": 309,
+                "text": "Control cable | 200 | feet | 4.00 | USD 800.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "quantity": {
+            "value": 200,
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 8,
+                "line_end": 8,
+                "char_start": 262,
+                "char_end": 309,
+                "text": "Control cable | 200 | feet | 4.00 | USD 800.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "unit": {
+            "value": "feet",
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 8,
+                "line_end": 8,
+                "char_start": 262,
+                "char_end": 309,
+                "text": "Control cable | 200 | feet | 4.00 | USD 800.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "unit_price": {
+            "value": 4.00,
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 8,
+                "line_end": 8,
+                "char_start": 262,
+                "char_end": 309,
+                "text": "Control cable | 200 | feet | 4.00 | USD 800.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "amount": {
+            "value": 800.00,
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 8,
+                "line_end": 8,
+                "char_start": 262,
+                "char_end": 309,
+                "text": "Control cable | 200 | feet | 4.00 | USD 800.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          }
+        },
+        {
+          "description": {
+            "value": "Fan disconnects",
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 9,
+                "line_end": 9,
+                "char_start": 309,
+                "char_end": 358,
+                "text": "Fan disconnects | 2 | each | 250.00 | USD 500.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "quantity": {
+            "value": 2,
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 9,
+                "line_end": 9,
+                "char_start": 309,
+                "char_end": 358,
+                "text": "Fan disconnects | 2 | each | 250.00 | USD 500.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "unit": {
+            "value": "each",
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 9,
+                "line_end": 9,
+                "char_start": 309,
+                "char_end": 358,
+                "text": "Fan disconnects | 2 | each | 250.00 | USD 500.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "unit_price": {
+            "value": 250.00,
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 9,
+                "line_end": 9,
+                "char_start": 309,
+                "char_end": 358,
+                "text": "Fan disconnects | 2 | each | 250.00 | USD 500.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          },
+          "amount": {
+            "value": 500.00,
+            "confidence": 0.78,
+            "evidence": [
+              {
+                "source": "08_cost_items.txt",
+                "page": null,
+                "line_start": 9,
+                "line_end": 9,
+                "char_start": 309,
+                "char_end": 358,
+                "text": "Fan disconnects | 2 | each | 250.00 | USD 500.00\n",
+                "text_origin": "text"
+              }
+            ],
+            "method": "table",
+            "validation": "valid",
+            "signals": [
+              "table_column"
+            ],
+            "alternatives": []
+          }
+        }
+      ],
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 209,
+          "char_end": 262,
+          "text": "Electrical labor | 20 | hours | 85.00 | USD 1,700.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "table",
+      "validation": "valid",
+      "signals": [
+        "table_base=0.78",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": 1,
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 11,
+          "line_end": 11,
+          "char_start": 392,
+          "char_end": 424,
+          "text": "Schedule Impact: 1 calendar day\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": "calendar_days",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "08_cost_items.txt",
+          "page": null,
+          "line_start": 11,
+          "line_end": 11,
+          "char_start": 392,
+          "char_end": 424,
+          "text": "Schedule Impact: 1 calendar day\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    }
+  },
+  "issues": [],
+  "missing_fields": [
+    "project_number",
+    "document_date",
+    "revision",
+    "contractor",
+    "subcontractor",
+    "owner",
+    "architect_engineer",
+    "reason",
+    "discipline",
+    "referenced_documents",
+    "requested_amount",
+    "proposed_amount",
+    "approved_amount",
+    "final_amount",
+    "previous_contract_amount",
+    "revised_contract_amount",
+    "credits_deductions",
+    "proposed_completion_date",
+    "approval_status",
+    "approval_date",
+    "approver_name"
+  ],
+  "consistency": "passed",
+  "llm_used": false,
+  "processing_ms": 55.574
+}

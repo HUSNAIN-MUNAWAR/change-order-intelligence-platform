@@ -1,0 +1,11 @@
+SYNTHETIC TEST DOCUMENT - deliberate revision/date ambiguity
+CHANGE ORDER
+Change Order Number: CO-011
+Project: Central Station
+Document Date: 06/07/2026
+Revision: A
+Revision: B
+Requested Amount: USD 7,800.00
+Approved Amount: USD 7,200.00
+Approval Date: 2026-07-09
+Approval Status: Approved

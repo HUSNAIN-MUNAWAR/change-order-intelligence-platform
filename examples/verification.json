@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-06",
+  "timezone": "Asia/Karachi",
+  "python": "3.13.9",
+  "platform": "Windows",
+  "pytest": {
+    "passed": 118,
+    "duration_seconds": 14.36,
+    "command": "python -m pytest -q --cov=changeorder --cov-report=term-missing --cov-report=json:tmp/coverage.json"
+  },
+  "coverage": {
+    "covered_lines": 870,
+    "num_statements": 918,
+    "percent_covered": 94.77124183006536,
+    "percent_covered_display": "95",
+    "missing_lines": 48,
+    "excluded_lines": 5,
+    "percent_statements_covered": 94.77124183006536,
+    "percent_statements_covered_display": "95"
+  },
+  "ruff_lint": "passed",
+  "ruff_format": "passed",
+  "baseline_non_editable_install": {
+    "text": "passed",
+    "pdf": "passed",
+    "optional_packages_absent": [
+      "openai",
+      "pytesseract",
+      "PIL",
+      "pytest",
+      "reportlab"
+    ]
+  },
+  "pdf_visual_review": {
+    "renderer": "Poppler pdftoppm",
+    "pages_inspected": 4,
+    "result": "passed"
+  },
+  "live_llm_executed": false,
+  "live_tesseract_recognition_executed": false,
+  "actual_missing_tesseract_failure_executed": true,
+  "remote_ci_executed": false
+}

@@ -1,0 +1,29 @@
+{
+  "filename": "fresno-change-order.pdf",
+  "source_id": "fresno-2025-cc03",
+  "split": "development",
+  "document_type": "executed public contract change order",
+  "pages": 1,
+  "fields": {
+    "change_order_number": "6",
+    "project_name": "TCC Park at MLK Magnet Core",
+    "project_number": "PW00857",
+    "contractor": "Avison Construction, Inc.",
+    "total_change_amount": "112478.32",
+    "previous_contract_amount": "8646293.00",
+    "revised_contract_amount": "10992895.24",
+    "schedule_impact": "60",
+    "schedule_unit": "days"
+  },
+  "unsupported_fields": [
+    "document_date",
+    "approval_status",
+    "approval_date",
+    "approver_name",
+    "owner",
+    "subcontractor",
+    "architect_engineer",
+    "revision"
+  ],
+  "notes": "Values were manually checked against the original one-page PDF. The form contains several amounts and signature/approval labels; unexecuted or ambiguous fields remain unannotated. The description contains multiple work items and is intentionally not scored as one flattened value."
+}

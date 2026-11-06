@@ -1,0 +1,694 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "success",
+  "source": {
+    "identifier": "01_clean.txt",
+    "filename": "01_clean.txt",
+    "sha256": "a779042a3df00b1d62b4bc3ed363e8b54eece2b8453a34a54d1179970f6a2b3e",
+    "media_type": "text/plain",
+    "byte_count": 821,
+    "metadata": {},
+    "pages": [
+      {
+        "page": null,
+        "raw_text": "SYNTHETIC TEST DOCUMENT - not supplied by Sledge\nCHANGE ORDER\nChange Order Number: CO-001\nProject Name: Riverside Medical Center\nProject Number: RMC-2026-014\nDocument Date: 2026-06-15\nRevision: A\nContractor: Alder Construction LLC\nSubcontractor: Summit Electrical Inc.\nOwner: Riverside Health Trust\nArchitect / Engineer: Northline Design Group\nDescription of Change: Install six additional emergency lighting circuits in the east wing.\nReason for Change: Owner-directed life safety upgrade.\nDiscipline: Electrical\nReferenced Documents: E-201 Rev C; RFI-087\nTotal Change Amount: USD 12,500.00\nPrevious Contract Amount: USD 250,000.00\nRevised Contract Amount: USD 262,500.00\nSchedule Impact: 3 calendar days\nProposed Completion Date: 2026-09-18\nApproval Status: Approved\nApproval Date: 2026-06-17\nApprover Name: Jordan Lee\n",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT - not supplied by Sledge\nCHANGE ORDER\nChange Order Number: CO-001\nProject Name: Riverside Medical Center\nProject Number: RMC-2026-014\nDocument Date: 2026-06-15\nRevision: A\nContractor: Alder Construction LLC\nSubcontractor: Summit Electrical Inc.\nOwner: Riverside Health Trust\nArchitect / Engineer: Northline Design Group\nDescription of Change: Install six additional emergency lighting circuits in the east wing.\nReason for Change: Owner-directed life safety upgrade.\nDiscipline: Electrical\nReferenced Documents: E-201 Rev C; RFI-087\nTotal Change Amount: USD 12,500.00\nPrevious Contract Amount: USD 250,000.00\nRevised Contract Amount: USD 262,500.00\nSchedule Impact: 3 calendar days\nProposed Completion Date: 2026-09-18\nApproval Status: Approved\nApproval Date: 2026-06-17\nApprover Name: Jordan Lee",
+        "native_text": null,
+        "text_origin": "text",
+        "ocr_quality": null
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": "CO-001",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 62,
+          "char_end": 90,
+          "text": "Change Order Number: CO-001\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": "Riverside Medical Center",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 90,
+          "char_end": 129,
+          "text": "Project Name: Riverside Medical Center\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": "RMC-2026-014",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 129,
+          "char_end": 158,
+          "text": "Project Number: RMC-2026-014\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": "CHANGE ORDER",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 2,
+          "line_end": 2,
+          "char_start": 49,
+          "char_end": 62,
+          "text": "CHANGE ORDER\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "title",
+      "validation": "valid",
+      "signals": [
+        "title_base=0.86",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": "2026-06-15",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 6,
+          "line_end": 6,
+          "char_start": 158,
+          "char_end": 184,
+          "text": "Document Date: 2026-06-15\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "revision": {
+      "value": "A",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 184,
+          "char_end": 196,
+          "text": "Revision: A\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "contractor": {
+      "value": "Alder Construction LLC",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 196,
+          "char_end": 231,
+          "text": "Contractor: Alder Construction LLC\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": "Summit Electrical Inc.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 231,
+          "char_end": 269,
+          "text": "Subcontractor: Summit Electrical Inc.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "owner": {
+      "value": "Riverside Health Trust",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 269,
+          "char_end": 299,
+          "text": "Owner: Riverside Health Trust\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": "Northline Design Group",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 11,
+          "line_end": 11,
+          "char_start": 299,
+          "char_end": 344,
+          "text": "Architect / Engineer: Northline Design Group\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "description": {
+      "value": "Install six additional emergency lighting circuits in the east wing.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 12,
+          "line_end": 12,
+          "char_start": 344,
+          "char_end": 436,
+          "text": "Description of Change: Install six additional emergency lighting circuits in the east wing.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "reason": {
+      "value": "Owner-directed life safety upgrade.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 13,
+          "line_end": 13,
+          "char_start": 436,
+          "char_end": 491,
+          "text": "Reason for Change: Owner-directed life safety upgrade.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": "Electrical",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 14,
+          "line_end": 14,
+          "char_start": 491,
+          "char_end": 514,
+          "text": "Discipline: Electrical\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": [
+        "E-201 Rev C",
+        "RFI-087"
+      ],
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 15,
+          "line_end": 15,
+          "char_start": 514,
+          "char_end": 557,
+          "text": "Referenced Documents: E-201 Rev C; RFI-087\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": 12500.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 16,
+          "line_end": 16,
+          "char_start": 557,
+          "char_end": 592,
+          "text": "Total Change Amount: USD 12,500.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "requested_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": "stated_total",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 16,
+          "line_end": 16,
+          "char_start": 557,
+          "char_end": 592,
+          "text": "Total Change Amount: USD 12,500.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "amount_role_in_source"
+      ],
+      "alternatives": []
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 16,
+          "line_end": 16,
+          "char_start": 557,
+          "char_end": 592,
+          "text": "Total Change Amount: USD 12,500.00\n",
+          "text_origin": "text"
+        },
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 17,
+          "line_end": 17,
+          "char_start": 592,
+          "char_end": 633,
+          "text": "Previous Contract Amount: USD 250,000.00\n",
+          "text_origin": "text"
+        },
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 18,
+          "line_end": 18,
+          "char_start": 633,
+          "char_end": 673,
+          "text": "Revised Contract Amount: USD 262,500.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": 250000.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 17,
+          "line_end": 17,
+          "char_start": 592,
+          "char_end": 633,
+          "text": "Previous Contract Amount: USD 250,000.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": 262500.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 18,
+          "line_end": 18,
+          "char_start": 633,
+          "char_end": 673,
+          "text": "Revised Contract Amount: USD 262,500.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": 3,
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 19,
+          "line_end": 19,
+          "char_start": 673,
+          "char_end": 706,
+          "text": "Schedule Impact: 3 calendar days\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": "calendar_days",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 19,
+          "line_end": 19,
+          "char_start": 673,
+          "char_end": 706,
+          "text": "Schedule Impact: 3 calendar days\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": "2026-09-18",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 20,
+          "line_end": 20,
+          "char_start": 706,
+          "char_end": 743,
+          "text": "Proposed Completion Date: 2026-09-18\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": "approved",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 21,
+          "line_end": 21,
+          "char_start": 743,
+          "char_end": 769,
+          "text": "Approval Status: Approved\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": "2026-06-17",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 22,
+          "line_end": 22,
+          "char_start": 769,
+          "char_end": 795,
+          "text": "Approval Date: 2026-06-17\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": "Jordan Lee",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "01_clean.txt",
+          "page": null,
+          "line_start": 23,
+          "line_end": 23,
+          "char_start": 795,
+          "char_end": 821,
+          "text": "Approver Name: Jordan Lee\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    }
+  },
+  "issues": [],
+  "missing_fields": [
+    "requested_amount",
+    "proposed_amount",
+    "approved_amount",
+    "final_amount",
+    "credits_deductions",
+    "line_items"
+  ],
+  "consistency": "passed",
+  "llm_used": false,
+  "processing_ms": 33.386
+}

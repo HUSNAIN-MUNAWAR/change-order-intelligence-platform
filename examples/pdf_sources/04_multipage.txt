@@ -1,0 +1,17 @@
+CHANGE ORDER
+Change Order Number: CO-004
+Project Name: Meadow School Addition
+Project Number: MSA-18
+Document Date: 2026-06-22
+Contractor: Meadow Builders
+Description: Extend storm drainage to the relocated outfall.
+Reason: Revised civil grading design.
+---PAGE---
+CHANGE ORDER
+Change Order Number: CO-004
+Referenced Documents: C-402 Rev D; RFI-102
+Total Change Amount: USD 15,300.00
+Previous Contract Amount: USD 400,000.00
+Revised Contract Amount: USD 415,300.00
+Schedule Impact: 5 calendar days
+Approval Status: Pending

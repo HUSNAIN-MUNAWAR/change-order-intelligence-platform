@@ -1,0 +1,9 @@
+SYNTHETIC TEST DOCUMENT
+CHANGE ORDER
+Change Order Number: CO-009
+Project Name: North Depot
+Description: Add trench shoring after discovery of unstable soil.
+Reason: Unforeseen site condition.
+Total Change Amount: 4,250.00
+Approved By: ____________________
+Signature: ____________________

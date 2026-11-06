@@ -1,0 +1,1562 @@
+{
+  "$defs": {
+    "Alternative_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence",
+        "method"
+      ],
+      "title": "Alternative[Annotated[Decimal, FieldInfo(annotation=NoneType, required=True, metadata=[AllowInfNan(allow_inf_nan=False), _PydanticGeneralMetadata(max_digits=18, decimal_places=2)])]]",
+      "type": "object"
+    },
+    "Alternative_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_4_____": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence",
+        "method"
+      ],
+      "title": "Alternative[Annotated[Decimal, FieldInfo(annotation=NoneType, required=True, metadata=[AllowInfNan(allow_inf_nan=False), _PydanticGeneralMetadata(max_digits=18, decimal_places=4)])]]",
+      "type": "object"
+    },
+    "Alternative_Annotated_str__Strict_strict_True___": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "title": "Value",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence",
+        "method"
+      ],
+      "title": "Alternative[Annotated[str, Strict(strict=True)]]",
+      "type": "object"
+    },
+    "Alternative_Literal__approved____pending____proposed____requested____rejected____draft____void___": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "enum": [
+            "approved",
+            "pending",
+            "proposed",
+            "requested",
+            "rejected",
+            "draft",
+            "void"
+          ],
+          "title": "Value",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence",
+        "method"
+      ],
+      "title": "Alternative[Literal['approved', 'pending', 'proposed', 'requested', 'rejected', 'draft', 'void']]",
+      "type": "object"
+    },
+    "Alternative_Literal__days____calendar_days____working_days____weeks____hours___": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "enum": [
+            "days",
+            "calendar_days",
+            "working_days",
+            "weeks",
+            "hours"
+          ],
+          "title": "Value",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence",
+        "method"
+      ],
+      "title": "Alternative[Literal['days', 'calendar_days', 'working_days', 'weeks', 'hours']]",
+      "type": "object"
+    },
+    "Alternative_Literal__stated_total____requested____proposed____approved____final___": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "enum": [
+            "stated_total",
+            "requested",
+            "proposed",
+            "approved",
+            "final"
+          ],
+          "title": "Value",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence",
+        "method"
+      ],
+      "title": "Alternative[Literal['stated_total', 'requested', 'proposed', 'approved', 'final']]",
+      "type": "object"
+    },
+    "Alternative_date_": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "format": "date",
+          "title": "Value",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence",
+        "method"
+      ],
+      "title": "Alternative[date]",
+      "type": "object"
+    },
+    "Alternative_list_Annotated_str__Strict_strict_True____": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Value",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence",
+        "method"
+      ],
+      "title": "Alternative[list[Annotated[str, Strict(strict=True)]]]",
+      "type": "object"
+    },
+    "Alternative_list_CostItem__": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "items": {
+            "$ref": "#/$defs/CostItem"
+          },
+          "title": "Value",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence",
+        "method"
+      ],
+      "title": "Alternative[list[CostItem]]",
+      "type": "object"
+    },
+    "ChangeOrder": {
+      "additionalProperties": false,
+      "properties": {
+        "change_order_number": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "project_name": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "project_number": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "document_title": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "document_date": {
+          "$ref": "#/$defs/ExtractedField_date_"
+        },
+        "revision": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "contractor": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "subcontractor": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "owner": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "architect_engineer": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "description": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "reason": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "discipline": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "referenced_documents": {
+          "$ref": "#/$defs/ExtractedField_list_Annotated_str__Strict_strict_True____"
+        },
+        "total_change_amount": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        },
+        "requested_amount": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        },
+        "proposed_amount": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        },
+        "approved_amount": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        },
+        "final_amount": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        },
+        "amount_basis": {
+          "$ref": "#/$defs/ExtractedField_Literal__stated_total____requested____proposed____approved____final___"
+        },
+        "currency": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "previous_contract_amount": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        },
+        "revised_contract_amount": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        },
+        "credits_deductions": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        },
+        "line_items": {
+          "$ref": "#/$defs/ExtractedField_list_CostItem__"
+        },
+        "schedule_impact": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_4_____"
+        },
+        "schedule_unit": {
+          "$ref": "#/$defs/ExtractedField_Literal__days____calendar_days____working_days____weeks____hours___"
+        },
+        "proposed_completion_date": {
+          "$ref": "#/$defs/ExtractedField_date_"
+        },
+        "approval_status": {
+          "$ref": "#/$defs/ExtractedField_Literal__approved____pending____proposed____requested____rejected____draft____void___"
+        },
+        "approval_date": {
+          "$ref": "#/$defs/ExtractedField_date_"
+        },
+        "approver_name": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        }
+      },
+      "title": "ChangeOrder",
+      "type": "object"
+    },
+    "CostItem": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "quantity": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_4_____"
+        },
+        "unit": {
+          "$ref": "#/$defs/ExtractedField_Annotated_str__Strict_strict_True___"
+        },
+        "unit_price": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        },
+        "amount": {
+          "$ref": "#/$defs/ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+        }
+      },
+      "required": [
+        "description",
+        "amount"
+      ],
+      "title": "CostItem",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "title": "Source",
+          "type": "string"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "line_start": {
+          "minimum": 1,
+          "title": "Line Start",
+          "type": "integer"
+        },
+        "line_end": {
+          "minimum": 1,
+          "title": "Line End",
+          "type": "integer"
+        },
+        "char_start": {
+          "minimum": 0,
+          "title": "Char Start",
+          "type": "integer"
+        },
+        "char_end": {
+          "minimum": 0,
+          "title": "Char End",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "text_origin": {
+          "enum": [
+            "native",
+            "ocr",
+            "text"
+          ],
+          "title": "Text Origin",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "line_start",
+        "line_end",
+        "char_start",
+        "char_end",
+        "text",
+        "text_origin"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Evidence"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "method": {
+          "default": "missing",
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "validation": {
+          "default": "missing",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid",
+            "warning",
+            "conflict"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Signals",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_2_____"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "title": "ExtractedField[Annotated[Decimal, FieldInfo(annotation=NoneType, required=True, metadata=[AllowInfNan(allow_inf_nan=False), _PydanticGeneralMetadata(max_digits=18, decimal_places=2)])]]",
+      "type": "object"
+    },
+    "ExtractedField_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_4_____": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Evidence"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "method": {
+          "default": "missing",
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "validation": {
+          "default": "missing",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid",
+            "warning",
+            "conflict"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Signals",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative_Annotated_Decimal__FieldInfo_annotation_NoneType__required_True__metadata__AllowInfNan_allow_inf_nan_False____PydanticGeneralMetadata_max_digits_18__decimal_places_4_____"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "title": "ExtractedField[Annotated[Decimal, FieldInfo(annotation=NoneType, required=True, metadata=[AllowInfNan(allow_inf_nan=False), _PydanticGeneralMetadata(max_digits=18, decimal_places=4)])]]",
+      "type": "object"
+    },
+    "ExtractedField_Annotated_str__Strict_strict_True___": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Evidence"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "method": {
+          "default": "missing",
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "validation": {
+          "default": "missing",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid",
+            "warning",
+            "conflict"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Signals",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative_Annotated_str__Strict_strict_True___"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "title": "ExtractedField[Annotated[str, Strict(strict=True)]]",
+      "type": "object"
+    },
+    "ExtractedField_Literal__approved____pending____proposed____requested____rejected____draft____void___": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "enum": [
+                "approved",
+                "pending",
+                "proposed",
+                "requested",
+                "rejected",
+                "draft",
+                "void"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Evidence"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "method": {
+          "default": "missing",
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "validation": {
+          "default": "missing",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid",
+            "warning",
+            "conflict"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Signals",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative_Literal__approved____pending____proposed____requested____rejected____draft____void___"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "title": "ExtractedField[Literal['approved', 'pending', 'proposed', 'requested', 'rejected', 'draft', 'void']]",
+      "type": "object"
+    },
+    "ExtractedField_Literal__days____calendar_days____working_days____weeks____hours___": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "enum": [
+                "days",
+                "calendar_days",
+                "working_days",
+                "weeks",
+                "hours"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Evidence"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "method": {
+          "default": "missing",
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "validation": {
+          "default": "missing",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid",
+            "warning",
+            "conflict"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Signals",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative_Literal__days____calendar_days____working_days____weeks____hours___"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "title": "ExtractedField[Literal['days', 'calendar_days', 'working_days', 'weeks', 'hours']]",
+      "type": "object"
+    },
+    "ExtractedField_Literal__stated_total____requested____proposed____approved____final___": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "enum": [
+                "stated_total",
+                "requested",
+                "proposed",
+                "approved",
+                "final"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Evidence"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "method": {
+          "default": "missing",
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "validation": {
+          "default": "missing",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid",
+            "warning",
+            "conflict"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Signals",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative_Literal__stated_total____requested____proposed____approved____final___"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "title": "ExtractedField[Literal['stated_total', 'requested', 'proposed', 'approved', 'final']]",
+      "type": "object"
+    },
+    "ExtractedField_date_": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Evidence"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "method": {
+          "default": "missing",
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "validation": {
+          "default": "missing",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid",
+            "warning",
+            "conflict"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Signals",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative_date_"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "title": "ExtractedField[date]",
+      "type": "object"
+    },
+    "ExtractedField_list_Annotated_str__Strict_strict_True____": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Evidence"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "method": {
+          "default": "missing",
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "validation": {
+          "default": "missing",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid",
+            "warning",
+            "conflict"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Signals",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative_list_Annotated_str__Strict_strict_True____"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "title": "ExtractedField[list[Annotated[str, Strict(strict=True)]]]",
+      "type": "object"
+    },
+    "ExtractedField_list_CostItem__": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/CostItem"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "confidence": {
+          "default": 0.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Evidence"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "method": {
+          "default": "missing",
+          "enum": [
+            "label",
+            "title",
+            "table",
+            "llm",
+            "missing"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "validation": {
+          "default": "missing",
+          "enum": [
+            "valid",
+            "missing",
+            "invalid",
+            "warning",
+            "conflict"
+          ],
+          "title": "Validation",
+          "type": "string"
+        },
+        "signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Signals",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/Alternative_list_CostItem__"
+          },
+          "title": "Alternatives",
+          "type": "array"
+        }
+      },
+      "title": "ExtractedField[list[CostItem]]",
+      "type": "object"
+    },
+    "Issue": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "severity": {
+          "default": "warning",
+          "enum": [
+            "info",
+            "warning",
+            "recoverable_error",
+            "fatal_error"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Field"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Evidence"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "Issue",
+      "type": "object"
+    },
+    "PageText": {
+      "additionalProperties": false,
+      "properties": {
+        "page": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "raw_text": {
+          "title": "Raw Text",
+          "type": "string"
+        },
+        "cleaned_text": {
+          "title": "Cleaned Text",
+          "type": "string"
+        },
+        "native_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Native Text"
+        },
+        "text_origin": {
+          "enum": [
+            "native",
+            "ocr",
+            "text"
+          ],
+          "title": "Text Origin",
+          "type": "string"
+        },
+        "ocr_quality": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ocr Quality"
+        }
+      },
+      "required": [
+        "raw_text",
+        "cleaned_text",
+        "text_origin"
+      ],
+      "title": "PageText",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "identifier": {
+          "title": "Identifier",
+          "type": "string"
+        },
+        "filename": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Filename"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sha256"
+        },
+        "media_type": {
+          "title": "Media Type",
+          "type": "string"
+        },
+        "byte_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Byte Count"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Metadata",
+          "type": "object"
+        },
+        "pages": {
+          "items": {
+            "$ref": "#/$defs/PageText"
+          },
+          "title": "Pages",
+          "type": "array"
+        }
+      },
+      "required": [
+        "identifier",
+        "media_type"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "pipeline_version": {
+      "default": "0.1.0",
+      "title": "Pipeline Version",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "success",
+        "partial",
+        "failed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "data": {
+      "$ref": "#/$defs/ChangeOrder"
+    },
+    "issues": {
+      "items": {
+        "$ref": "#/$defs/Issue"
+      },
+      "title": "Issues",
+      "type": "array"
+    },
+    "missing_fields": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Missing Fields",
+      "type": "array"
+    },
+    "consistency": {
+      "default": "not_checked",
+      "enum": [
+        "passed",
+        "warning",
+        "not_checked"
+      ],
+      "title": "Consistency",
+      "type": "string"
+    },
+    "llm_used": {
+      "default": false,
+      "title": "Llm Used",
+      "type": "boolean"
+    },
+    "processing_ms": {
+      "minimum": 0,
+      "title": "Processing Ms",
+      "type": "number"
+    }
+  },
+  "required": [
+    "status",
+    "source",
+    "processing_ms"
+  ],
+  "title": "ExtractionResult",
+  "type": "object"
+}

@@ -1,0 +1,69 @@
+{
+  "documents": [
+    {
+      "input": "01_clean.txt",
+      "status": "success",
+      "issues": 0
+    },
+    {
+      "input": "02_messy.txt",
+      "status": "success",
+      "issues": 0
+    },
+    {
+      "input": "03_digital.pdf",
+      "status": "success",
+      "issues": 0
+    },
+    {
+      "input": "04_multipage.pdf",
+      "status": "success",
+      "issues": 0
+    },
+    {
+      "input": "05_missing_amount.txt",
+      "status": "partial",
+      "issues": 1
+    },
+    {
+      "input": "06_conflict.txt",
+      "status": "partial",
+      "issues": 1
+    },
+    {
+      "input": "07_credit.txt",
+      "status": "partial",
+      "issues": 1
+    },
+    {
+      "input": "08_cost_items.txt",
+      "status": "success",
+      "issues": 0
+    },
+    {
+      "input": "09_missing_parties.txt",
+      "status": "success",
+      "issues": 0
+    },
+    {
+      "input": "10_ocr_noise.txt",
+      "status": "partial",
+      "issues": 6
+    },
+    {
+      "input": "11_ambiguous_revision.txt",
+      "status": "partial",
+      "issues": 2
+    },
+    {
+      "input": "12_unrelated.txt",
+      "status": "failed",
+      "issues": 1
+    }
+  ],
+  "counts": {
+    "success": 6,
+    "partial": 5,
+    "failed": 1
+  }
+}

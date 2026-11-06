@@ -1,0 +1,490 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "partial",
+  "source": {
+    "identifier": "06_conflict.txt",
+    "filename": "06_conflict.txt",
+    "sha256": "25f8404fbe4d9ed2c50ae2fb2f8c3e7e01eb3aecaeb24568c990df824ef2f635",
+    "media_type": "text/plain",
+    "byte_count": 294,
+    "metadata": {},
+    "pages": [
+      {
+        "page": null,
+        "raw_text": "SYNTHETIC TEST DOCUMENT - deliberately contradictory\nCHANGE ORDER\nChange Order Number: CO-006\nProject Name: Airport Service Building\nTotal Change Amount: USD 18,000.00\nDescription: Add galvanized support frames for rooftop equipment.\nTotal Change Amount: USD 19,500.00\nApproval Status: Pending\n",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT - deliberately contradictory\nCHANGE ORDER\nChange Order Number: CO-006\nProject Name: Airport Service Building\nTotal Change Amount: USD 18,000.00\nDescription: Add galvanized support frames for rooftop equipment.\nTotal Change Amount: USD 19,500.00\nApproval Status: Pending",
+        "native_text": null,
+        "text_origin": "text",
+        "ocr_quality": null
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": "CO-006",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "06_conflict.txt",
+          "page": null,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 66,
+          "char_end": 94,
+          "text": "Change Order Number: CO-006\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": "Airport Service Building",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "06_conflict.txt",
+          "page": null,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 94,
+          "char_end": 133,
+          "text": "Project Name: Airport Service Building\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": "CHANGE ORDER",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "source": "06_conflict.txt",
+          "page": null,
+          "line_start": 2,
+          "line_end": 2,
+          "char_start": 53,
+          "char_end": 66,
+          "text": "CHANGE ORDER\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "title",
+      "validation": "valid",
+      "signals": [
+        "title_base=0.86",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revision": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "contractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "owner": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "description": {
+      "value": "Add galvanized support frames for rooftop equipment.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "06_conflict.txt",
+          "page": null,
+          "line_start": 6,
+          "line_end": 6,
+          "char_start": 168,
+          "char_end": 234,
+          "text": "Description: Add galvanized support frames for rooftop equipment.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "reason": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": 18000.00,
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "source": "06_conflict.txt",
+          "page": null,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 133,
+          "char_end": 168,
+          "text": "Total Change Amount: USD 18,000.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "conflict",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03",
+        "competing_values=-0.35; cap=0.55"
+      ],
+      "alternatives": [
+        {
+          "value": 19500.00,
+          "evidence": [
+            {
+              "source": "06_conflict.txt",
+              "page": null,
+              "line_start": 7,
+              "line_end": 7,
+              "char_start": 234,
+              "char_end": 269,
+              "text": "Total Change Amount: USD 19,500.00\n",
+              "text_origin": "text"
+            }
+          ],
+          "method": "label"
+        }
+      ]
+    },
+    "requested_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": "stated_total",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "source": "06_conflict.txt",
+          "page": null,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 133,
+          "char_end": 168,
+          "text": "Total Change Amount: USD 18,000.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "warning",
+      "signals": [
+        "amount_role_in_source"
+      ],
+      "alternatives": []
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "06_conflict.txt",
+          "page": null,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 133,
+          "char_end": 168,
+          "text": "Total Change Amount: USD 18,000.00\n",
+          "text_origin": "text"
+        },
+        {
+          "source": "06_conflict.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 234,
+          "char_end": 269,
+          "text": "Total Change Amount: USD 19,500.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": "pending",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "06_conflict.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 269,
+          "char_end": 294,
+          "text": "Approval Status: Pending\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    }
+  },
+  "issues": [
+    {
+      "code": "CONFLICTING_VALUES",
+      "severity": "warning",
+      "message": "Multiple supported values; strongest candidate retained with alternatives for review",
+      "field": "total_change_amount",
+      "evidence": {
+        "source": "06_conflict.txt",
+        "page": null,
+        "line_start": 5,
+        "line_end": 5,
+        "char_start": 133,
+        "char_end": 168,
+        "text": "Total Change Amount: USD 18,000.00\n",
+        "text_origin": "text"
+      }
+    }
+  ],
+  "missing_fields": [
+    "project_number",
+    "document_date",
+    "revision",
+    "contractor",
+    "subcontractor",
+    "owner",
+    "architect_engineer",
+    "reason",
+    "discipline",
+    "referenced_documents",
+    "requested_amount",
+    "proposed_amount",
+    "approved_amount",
+    "final_amount",
+    "previous_contract_amount",
+    "revised_contract_amount",
+    "credits_deductions",
+    "line_items",
+    "schedule_impact",
+    "schedule_unit",
+    "proposed_completion_date",
+    "approval_date",
+    "approver_name"
+  ],
+  "consistency": "not_checked",
+  "llm_used": false,
+  "processing_ms": 14.382
+}

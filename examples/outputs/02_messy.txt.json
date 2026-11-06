@@ -1,0 +1,551 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "success",
+  "source": {
+    "identifier": "02_messy.txt",
+    "filename": "02_messy.txt",
+    "sha256": "fd1de64a90bb68b53687c98ea760f3b4642984ba59d83b56afc8065d40df3e6f",
+    "media_type": "text/plain",
+    "byte_count": 468,
+    "metadata": {},
+    "pages": [
+      {
+        "page": null,
+        "raw_text": "SYNTHETIC TEST DOCUMENT\nchange order\n  cO No.  :   0007-B\nPROJECT NAME : West Annex Renovation\nJob # : WA-008\ndate issued : June 18, 2026\ncontractor : Mason Building Co.\nscope of work:\n  Reroute chilled water piping above the corridor ceiling.\n  Provide two isolation valves and restore insulation.\nreason:\n  Existing beam conflicts with the coordinated HVAC route.\ntrade : HVAC\nproposed amount : USD 8,750.50\ntime extension : 2 working days\nstatus : Pending approval\n",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT\nchange order\ncO No. : 0007-B\nPROJECT NAME : West Annex Renovation\nJob # : WA-008\ndate issued : June 18, 2026\ncontractor : Mason Building Co.\nscope of work:\nReroute chilled water piping above the corridor ceiling.\nProvide two isolation valves and restore insulation.\nreason:\nExisting beam conflicts with the coordinated HVAC route.\ntrade : HVAC\nproposed amount : USD 8,750.50\ntime extension : 2 working days\nstatus : Pending approval",
+        "native_text": null,
+        "text_origin": "text",
+        "ocr_quality": null
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": "0007-B",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 39,
+          "char_end": 58,
+          "text": "cO No.  :   0007-B\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": "West Annex Renovation",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 58,
+          "char_end": 95,
+          "text": "PROJECT NAME : West Annex Renovation\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": "WA-008",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 95,
+          "char_end": 110,
+          "text": "Job # : WA-008\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": "change order",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 2,
+          "line_end": 2,
+          "char_start": 24,
+          "char_end": 37,
+          "text": "change order\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "title",
+      "validation": "valid",
+      "signals": [
+        "title_base=0.86",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": "2026-06-18",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 6,
+          "line_end": 6,
+          "char_start": 110,
+          "char_end": 138,
+          "text": "date issued : June 18, 2026\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "revision": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "contractor": {
+      "value": "Mason Building Co.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 138,
+          "char_end": 170,
+          "text": "contractor : Mason Building Co.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "owner": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "description": {
+      "value": "Reroute chilled water piping above the corridor ceiling.\nProvide two isolation valves and restore insulation.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 10,
+          "char_start": 170,
+          "char_end": 299,
+          "text": "scope of work:\n  Reroute chilled water piping above the corridor ceiling.\n  Provide two isolation valves and restore insulation.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "reason": {
+      "value": "Existing beam conflicts with the coordinated HVAC route.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 11,
+          "line_end": 12,
+          "char_start": 299,
+          "char_end": 366,
+          "text": "reason:\n  Existing beam conflicts with the coordinated HVAC route.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": "HVAC",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 13,
+          "line_end": 13,
+          "char_start": 366,
+          "char_end": 379,
+          "text": "trade : HVAC\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": 8750.50,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 14,
+          "line_end": 14,
+          "char_start": 379,
+          "char_end": 410,
+          "text": "proposed amount : USD 8,750.50\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "requested_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": 8750.50,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 14,
+          "line_end": 14,
+          "char_start": 379,
+          "char_end": 410,
+          "text": "proposed amount : USD 8,750.50\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": "proposed",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 14,
+          "line_end": 14,
+          "char_start": 379,
+          "char_end": 410,
+          "text": "proposed amount : USD 8,750.50\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "amount_role_in_source"
+      ],
+      "alternatives": []
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 14,
+          "line_end": 14,
+          "char_start": 379,
+          "char_end": 410,
+          "text": "proposed amount : USD 8,750.50\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": 2,
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 15,
+          "line_end": 15,
+          "char_start": 410,
+          "char_end": 442,
+          "text": "time extension : 2 working days\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": "working_days",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 15,
+          "line_end": 15,
+          "char_start": 410,
+          "char_end": 442,
+          "text": "time extension : 2 working days\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": "pending",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "02_messy.txt",
+          "page": null,
+          "line_start": 16,
+          "line_end": 16,
+          "char_start": 442,
+          "char_end": 468,
+          "text": "status : Pending approval\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    }
+  },
+  "issues": [],
+  "missing_fields": [
+    "revision",
+    "subcontractor",
+    "owner",
+    "architect_engineer",
+    "referenced_documents",
+    "requested_amount",
+    "approved_amount",
+    "final_amount",
+    "previous_contract_amount",
+    "revised_contract_amount",
+    "credits_deductions",
+    "line_items",
+    "proposed_completion_date",
+    "approval_date",
+    "approver_name"
+  ],
+  "consistency": "not_checked",
+  "llm_used": false,
+  "processing_ms": 17.841
+}

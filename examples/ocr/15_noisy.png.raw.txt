@@ -1,0 +1,14 @@
+PAGE 1 [ocr]
+SYNTHETIC TEST DOCUMENT - NOT SUPPLIED BY SLEDGE
+CHANGE ORDER
+Change Order Number: CO-003
+Project Name: Harbor Warehouse
+Project Number: HW-0031
+Document Date: 2026-06-20
+Contractor: Harbor Build Ltd.
+Description: Upgrade air handling unit AHU-2 with a variable frequency drive.
+Discipline: HVAC
+Final Amount: EUR 6,400.00
+Schedule Impact: 0 days
+Approval Status: Approved
+Synthetic construction document |   Page 1 of 1

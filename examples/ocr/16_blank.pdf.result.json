@@ -1,0 +1,359 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "failed",
+  "source": {
+    "identifier": "16_blank.pdf",
+    "filename": "16_blank.pdf",
+    "sha256": "bd46865dd7fb2df0559fee7a91342f8d61f8e1d1ec0237e1844c01a1462df8cb",
+    "media_type": "application/pdf",
+    "byte_count": 4888,
+    "metadata": {
+      "format": "PDF 1.7",
+      "title": "Synthetic blank image-only OCR failure fixture"
+    },
+    "pages": [
+      {
+        "page": 1,
+        "raw_text": "",
+        "cleaned_text": "",
+        "native_text": null,
+        "text_origin": "native",
+        "ocr_quality": null
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revision": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "contractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "owner": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "description": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "reason": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "requested_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    }
+  },
+  "issues": [
+    {
+      "code": "OCR_NO_TEXT",
+      "severity": "warning",
+      "message": "OCR recovered no additional text on page 1",
+      "field": null,
+      "evidence": null
+    },
+    {
+      "code": "NO_EXTRACTABLE_TEXT",
+      "severity": "fatal_error",
+      "message": "PDF contains no usable text; inspect OCR warnings",
+      "field": null,
+      "evidence": null
+    }
+  ],
+  "missing_fields": [
+    "change_order_number",
+    "project_name",
+    "project_number",
+    "document_title",
+    "document_date",
+    "revision",
+    "contractor",
+    "subcontractor",
+    "owner",
+    "architect_engineer",
+    "description",
+    "reason",
+    "discipline",
+    "referenced_documents",
+    "total_change_amount",
+    "requested_amount",
+    "proposed_amount",
+    "approved_amount",
+    "final_amount",
+    "amount_basis",
+    "currency",
+    "previous_contract_amount",
+    "revised_contract_amount",
+    "credits_deductions",
+    "line_items",
+    "schedule_impact",
+    "schedule_unit",
+    "proposed_completion_date",
+    "approval_status",
+    "approval_date",
+    "approver_name"
+  ],
+  "consistency": "not_checked",
+  "llm_used": false,
+  "processing_ms": 269.655
+}

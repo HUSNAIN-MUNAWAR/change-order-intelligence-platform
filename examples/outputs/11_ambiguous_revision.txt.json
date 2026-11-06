@@ -1,0 +1,548 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "partial",
+  "source": {
+    "identifier": "11_ambiguous_revision.txt",
+    "filename": "11_ambiguous_revision.txt",
+    "sha256": "c035737c2664797a7d55ce5f4ac5d332030029da3c92def837852b5485d97d39",
+    "media_type": "text/plain",
+    "byte_count": 290,
+    "metadata": {},
+    "pages": [
+      {
+        "page": null,
+        "raw_text": "SYNTHETIC TEST DOCUMENT - deliberate revision/date ambiguity\nCHANGE ORDER\nChange Order Number: CO-011\nProject: Central Station\nDocument Date: 06/07/2026\nRevision: A\nRevision: B\nRequested Amount: USD 7,800.00\nApproved Amount: USD 7,200.00\nApproval Date: 2026-07-09\nApproval Status: Approved\n",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT - deliberate revision/date ambiguity\nCHANGE ORDER\nChange Order Number: CO-011\nProject: Central Station\nDocument Date: 06/07/2026\nRevision: A\nRevision: B\nRequested Amount: USD 7,800.00\nApproved Amount: USD 7,200.00\nApproval Date: 2026-07-09\nApproval Status: Approved",
+        "native_text": null,
+        "text_origin": "text",
+        "ocr_quality": null
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": "CO-011",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 74,
+          "char_end": 102,
+          "text": "Change Order Number: CO-011\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": "Central Station",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 102,
+          "char_end": 127,
+          "text": "Project: Central Station\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": "CHANGE ORDER",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 2,
+          "line_end": 2,
+          "char_start": 61,
+          "char_end": 74,
+          "text": "CHANGE ORDER\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "title",
+      "validation": "valid",
+      "signals": [
+        "title_base=0.86",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "invalid",
+      "signals": [],
+      "alternatives": []
+    },
+    "revision": {
+      "value": "A",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 6,
+          "line_end": 6,
+          "char_start": 153,
+          "char_end": 165,
+          "text": "Revision: A\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "conflict",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "competing_values=-0.35; cap=0.55"
+      ],
+      "alternatives": [
+        {
+          "value": "B",
+          "evidence": [
+            {
+              "source": "11_ambiguous_revision.txt",
+              "page": null,
+              "line_start": 7,
+              "line_end": 7,
+              "char_start": 165,
+              "char_end": 177,
+              "text": "Revision: B\n",
+              "text_origin": "text"
+            }
+          ],
+          "method": "label"
+        }
+      ]
+    },
+    "contractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "owner": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "description": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "reason": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": 7200.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 208,
+          "char_end": 238,
+          "text": "Approved Amount: USD 7,200.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "requested_amount": {
+      "value": 7800.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 177,
+          "char_end": 208,
+          "text": "Requested Amount: USD 7,800.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": 7200.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 208,
+          "char_end": 238,
+          "text": "Approved Amount: USD 7,200.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": "approved",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 208,
+          "char_end": 238,
+          "text": "Approved Amount: USD 7,200.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "amount_role_in_source"
+      ],
+      "alternatives": []
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 177,
+          "char_end": 208,
+          "text": "Requested Amount: USD 7,800.00\n",
+          "text_origin": "text"
+        },
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 208,
+          "char_end": 238,
+          "text": "Approved Amount: USD 7,200.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": "approved",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 11,
+          "line_end": 11,
+          "char_start": 264,
+          "char_end": 290,
+          "text": "Approval Status: Approved\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": "2026-07-09",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "11_ambiguous_revision.txt",
+          "page": null,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 238,
+          "char_end": 264,
+          "text": "Approval Date: 2026-07-09\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    }
+  },
+  "issues": [
+    {
+      "code": "AMBIGUOUS_DATE",
+      "severity": "warning",
+      "message": "'06/07/2026' needs an explicit date-order setting",
+      "field": "document_date",
+      "evidence": {
+        "source": "11_ambiguous_revision.txt",
+        "page": null,
+        "line_start": 5,
+        "line_end": 5,
+        "char_start": 127,
+        "char_end": 153,
+        "text": "Document Date: 06/07/2026\n",
+        "text_origin": "text"
+      }
+    },
+    {
+      "code": "CONFLICTING_VALUES",
+      "severity": "warning",
+      "message": "Multiple supported values; strongest candidate retained with alternatives for review",
+      "field": "revision",
+      "evidence": {
+        "source": "11_ambiguous_revision.txt",
+        "page": null,
+        "line_start": 6,
+        "line_end": 6,
+        "char_start": 153,
+        "char_end": 165,
+        "text": "Revision: A\n",
+        "text_origin": "text"
+      }
+    }
+  ],
+  "missing_fields": [
+    "project_number",
+    "document_date",
+    "contractor",
+    "subcontractor",
+    "owner",
+    "architect_engineer",
+    "description",
+    "reason",
+    "discipline",
+    "referenced_documents",
+    "proposed_amount",
+    "final_amount",
+    "previous_contract_amount",
+    "revised_contract_amount",
+    "credits_deductions",
+    "line_items",
+    "schedule_impact",
+    "schedule_unit",
+    "proposed_completion_date",
+    "approver_name"
+  ],
+  "consistency": "not_checked",
+  "llm_used": false,
+  "processing_ms": 22.721
+}

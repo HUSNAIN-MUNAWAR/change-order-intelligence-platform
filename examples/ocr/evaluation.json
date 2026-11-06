@@ -1,0 +1,131 @@
+{
+  "engine": {
+    "version": "tesseract v5.4.0.20240606",
+    "languages": [
+      "eng",
+      "osd"
+    ]
+  },
+  "platform": "Windows",
+  "python": "3.13.9",
+  "genuine_local_ocr": true,
+  "network_api_used": false,
+  "positive_documents": 4,
+  "field_comparisons": 124,
+  "field_matches": 124,
+  "field_exact_match": 1.0,
+  "negative_cases_passed": 2,
+  "mean_processing_ms": 986.283,
+  "cases": [
+    {
+      "file": "13_scanned.pdf",
+      "status": "success",
+      "page_origins": [
+        "ocr"
+      ],
+      "field_comparisons": 31,
+      "mismatches": [],
+      "text_quality": [
+        {
+          "page": 1,
+          "word_error_rate": 0.0,
+          "character_error_rate": 0.0,
+          "tesseract_mean_word_score": 0.954
+        }
+      ],
+      "total_change_amount": 6400.00,
+      "total_field_confidence": 0.741,
+      "native_total_field_confidence": 0.93,
+      "processing_ms": 1919.872,
+      "sha256": "46ffebe45c8a3f538fb07fec46de71f383eb4a56325d052d2c42ad30003db6d5"
+    },
+    {
+      "file": "14_mixed.pdf",
+      "status": "success",
+      "page_origins": [
+        "native",
+        "ocr"
+      ],
+      "field_comparisons": 31,
+      "mismatches": [],
+      "text_quality": [
+        {
+          "page": 2,
+          "word_error_rate": 0.0,
+          "character_error_rate": 0.0,
+          "tesseract_mean_word_score": 0.954
+        }
+      ],
+      "total_change_amount": 6400.00,
+      "total_field_confidence": 0.93,
+      "native_total_field_confidence": 0.93,
+      "processing_ms": 839.807,
+      "sha256": "648f6b182b184c39a17a2428e84cab2bb194d4a32018d0567407e494105c71ec"
+    },
+    {
+      "file": "15_noisy.png",
+      "status": "success",
+      "page_origins": [
+        "ocr"
+      ],
+      "field_comparisons": 31,
+      "mismatches": [],
+      "text_quality": [
+        {
+          "page": 1,
+          "word_error_rate": 0.0,
+          "character_error_rate": 0.0,
+          "tesseract_mean_word_score": 0.9523333333333334
+        }
+      ],
+      "total_change_amount": 6400.00,
+      "total_field_confidence": 0.74,
+      "native_total_field_confidence": 0.93,
+      "processing_ms": 603.742,
+      "sha256": "68774d19eee953513044af94605fa47639201882536c7d6336a9c97326d8b2b8"
+    },
+    {
+      "file": "17_clear.jpg",
+      "status": "success",
+      "page_origins": [
+        "ocr"
+      ],
+      "field_comparisons": 31,
+      "mismatches": [],
+      "text_quality": [
+        {
+          "page": 1,
+          "word_error_rate": 0.0,
+          "character_error_rate": 0.0,
+          "tesseract_mean_word_score": 0.951
+        }
+      ],
+      "total_change_amount": 6400.00,
+      "total_field_confidence": 0.74,
+      "native_total_field_confidence": 0.93,
+      "processing_ms": 581.711,
+      "sha256": "e30b402865a3223ccf930a02c0e9418738b2d6ea8f62097e1eaa9eeadf76ee6b"
+    }
+  ],
+  "negative_cases": [
+    {
+      "file": "16_blank.pdf",
+      "status": "failed",
+      "issues": [
+        "OCR_NO_TEXT",
+        "NO_EXTRACTABLE_TEXT"
+      ],
+      "expected_failure": true
+    },
+    {
+      "file": "16_blank.png",
+      "status": "failed",
+      "issues": [
+        "OCR_USED",
+        "OCR_NO_TEXT"
+      ],
+      "expected_failure": true
+    }
+  ],
+  "limitations": "Four related, clearly synthetic representations of one source document, not four independent construction forms. Word/character error rates compare whitespace-normalized OCR with native PDF text. These results measure this small experiment, not production accuracy or confidence calibration. Real engine availability and timeout/missing-engine behavior are separately exercised in pytest."
+}

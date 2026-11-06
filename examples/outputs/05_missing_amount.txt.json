@@ -1,0 +1,479 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "partial",
+  "source": {
+    "identifier": "05_missing_amount.txt",
+    "filename": "05_missing_amount.txt",
+    "sha256": "b7176ddbc6da289ce20b11ab7764a3a5e4c7bd93d4ad62b06be1a06c0ee352db",
+    "media_type": "text/plain",
+    "byte_count": 338,
+    "metadata": {},
+    "pages": [
+      {
+        "page": null,
+        "raw_text": "SYNTHETIC TEST DOCUMENT\nCHANGE ORDER\nChange Order #: CO-005\nProject: Library Renewal\nProject ID: LIB-22\nContractor: Cedar General Contractors\nDescription: Replace corroded domestic water riser at stair B.\nReason: Concealed site condition.\nDiscipline: Plumbing\nTotal Change Amount: TBD\nSchedule Impact: No change\nApproval Status: Proposed\n",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT\nCHANGE ORDER\nChange Order #: CO-005\nProject: Library Renewal\nProject ID: LIB-22\nContractor: Cedar General Contractors\nDescription: Replace corroded domestic water riser at stair B.\nReason: Concealed site condition.\nDiscipline: Plumbing\nTotal Change Amount: TBD\nSchedule Impact: No change\nApproval Status: Proposed",
+        "native_text": null,
+        "text_origin": "text",
+        "ocr_quality": null
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": "CO-005",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 37,
+          "char_end": 60,
+          "text": "Change Order #: CO-005\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": "Library Renewal",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 60,
+          "char_end": 85,
+          "text": "Project: Library Renewal\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": "LIB-22",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 85,
+          "char_end": 104,
+          "text": "Project ID: LIB-22\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": "CHANGE ORDER",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 2,
+          "line_end": 2,
+          "char_start": 24,
+          "char_end": 37,
+          "text": "CHANGE ORDER\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "title",
+      "validation": "valid",
+      "signals": [
+        "title_base=0.86",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revision": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "contractor": {
+      "value": "Cedar General Contractors",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 6,
+          "line_end": 6,
+          "char_start": 104,
+          "char_end": 142,
+          "text": "Contractor: Cedar General Contractors\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "owner": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "description": {
+      "value": "Replace corroded domestic water riser at stair B.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 142,
+          "char_end": 205,
+          "text": "Description: Replace corroded domestic water riser at stair B.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "reason": {
+      "value": "Concealed site condition.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 205,
+          "char_end": 239,
+          "text": "Reason: Concealed site condition.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": "Plumbing",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 239,
+          "char_end": 260,
+          "text": "Discipline: Plumbing\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "requested_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "currency": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": 0,
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 11,
+          "line_end": 11,
+          "char_start": 285,
+          "char_end": 312,
+          "text": "Schedule Impact: No change\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": "proposed",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "05_missing_amount.txt",
+          "page": null,
+          "line_start": 12,
+          "line_end": 12,
+          "char_start": 312,
+          "char_end": 338,
+          "text": "Approval Status: Proposed\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    }
+  },
+  "issues": [
+    {
+      "code": "MISSING_CORE_FIELD",
+      "severity": "warning",
+      "message": "Core review field is absent or could not be validated",
+      "field": "total_change_amount",
+      "evidence": null
+    }
+  ],
+  "missing_fields": [
+    "document_date",
+    "revision",
+    "subcontractor",
+    "owner",
+    "architect_engineer",
+    "referenced_documents",
+    "total_change_amount",
+    "requested_amount",
+    "proposed_amount",
+    "approved_amount",
+    "final_amount",
+    "amount_basis",
+    "currency",
+    "previous_contract_amount",
+    "revised_contract_amount",
+    "credits_deductions",
+    "line_items",
+    "schedule_unit",
+    "proposed_completion_date",
+    "approval_date",
+    "approver_name"
+  ],
+  "consistency": "not_checked",
+  "llm_used": false,
+  "processing_ms": 15.284
+}

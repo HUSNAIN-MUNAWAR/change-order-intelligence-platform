@@ -1,0 +1,19 @@
+{
+  "url": "http://127.0.0.1:3000",
+  "browser": "msedge",
+  "desktop_viewport": [
+    1512,
+    1000
+  ],
+  "mobile_viewport": [
+    390,
+    844
+  ],
+  "real_api_fixture_extraction": true,
+  "fixture_label": "synthetic repository fixture, not an external benchmark",
+  "field_value_visible": true,
+  "json_download_schema_validated": true,
+  "mobile_no_horizontal_overflow": true,
+  "external_requests": [],
+  "screenshot": "docs/images/nextjs-demo.png"
+}

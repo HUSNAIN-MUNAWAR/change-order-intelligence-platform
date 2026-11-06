@@ -1,0 +1,549 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "partial",
+  "source": {
+    "identifier": "07_credit.txt",
+    "filename": "07_credit.txt",
+    "sha256": "3507891cb4a88bb79b33254b6ac383f77a5aab534e2097c19f96a19ed8064029",
+    "media_type": "text/plain",
+    "byte_count": 326,
+    "metadata": {},
+    "pages": [
+      {
+        "page": null,
+        "raw_text": "SYNTHETIC TEST DOCUMENT\nCHANGE ORDER\nCO Number: CR-0009\nProject: Civic Hall\nDescription: Omit duplicate branch conduit and associated labor.\nCredit: ($1,200.00)\nTotal Change Amount: USD -1,200.00\nPrevious Contract Amount: USD 50,000.00\nRevised Contract Amount: USD 48,800.00\nSchedule Impact: -1 days\nApproval Status: Approved\n",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT\nCHANGE ORDER\nCO Number: CR-0009\nProject: Civic Hall\nDescription: Omit duplicate branch conduit and associated labor.\nCredit: ($1,200.00)\nTotal Change Amount: USD -1,200.00\nPrevious Contract Amount: USD 50,000.00\nRevised Contract Amount: USD 48,800.00\nSchedule Impact: -1 days\nApproval Status: Approved",
+        "native_text": null,
+        "text_origin": "text",
+        "ocr_quality": null
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": "CR-0009",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 37,
+          "char_end": 56,
+          "text": "CO Number: CR-0009\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": "Civic Hall",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 56,
+          "char_end": 76,
+          "text": "Project: Civic Hall\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": "CHANGE ORDER",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 2,
+          "line_end": 2,
+          "char_start": 24,
+          "char_end": 37,
+          "text": "CHANGE ORDER\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "title",
+      "validation": "valid",
+      "signals": [
+        "title_base=0.86",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revision": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "contractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "owner": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "description": {
+      "value": "Omit duplicate branch conduit and associated labor.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 76,
+          "char_end": 141,
+          "text": "Description: Omit duplicate branch conduit and associated labor.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "reason": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": -1200.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 161,
+          "char_end": 196,
+          "text": "Total Change Amount: USD -1,200.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "requested_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": "stated_total",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 161,
+          "char_end": 196,
+          "text": "Total Change Amount: USD -1,200.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "amount_role_in_source"
+      ],
+      "alternatives": []
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 161,
+          "char_end": 196,
+          "text": "Total Change Amount: USD -1,200.00\n",
+          "text_origin": "text"
+        },
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 196,
+          "char_end": 236,
+          "text": "Previous Contract Amount: USD 50,000.00\n",
+          "text_origin": "text"
+        },
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 236,
+          "char_end": 275,
+          "text": "Revised Contract Amount: USD 48,800.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": 50000.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 196,
+          "char_end": 236,
+          "text": "Previous Contract Amount: USD 50,000.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": 48800.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 236,
+          "char_end": 275,
+          "text": "Revised Contract Amount: USD 48,800.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": -1200.00,
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 6,
+          "line_end": 6,
+          "char_start": 141,
+          "char_end": 161,
+          "text": "Credit: ($1,200.00)\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": -1,
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 275,
+          "char_end": 300,
+          "text": "Schedule Impact: -1 days\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": "days",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 275,
+          "char_end": 300,
+          "text": "Schedule Impact: -1 days\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": "approved",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "07_credit.txt",
+          "page": null,
+          "line_start": 11,
+          "line_end": 11,
+          "char_start": 300,
+          "char_end": 326,
+          "text": "Approval Status: Approved\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    }
+  },
+  "issues": [
+    {
+      "code": "AMBIGUOUS_CURRENCY",
+      "severity": "warning",
+      "message": "Dollar symbol does not establish USD/CAD/AUD; currency left unset unless explicitly supported elsewhere",
+      "field": "currency",
+      "evidence": {
+        "source": "07_credit.txt",
+        "page": null,
+        "line_start": 6,
+        "line_end": 6,
+        "char_start": 141,
+        "char_end": 161,
+        "text": "Credit: ($1,200.00)\n",
+        "text_origin": "text"
+      }
+    }
+  ],
+  "missing_fields": [
+    "project_number",
+    "document_date",
+    "revision",
+    "contractor",
+    "subcontractor",
+    "owner",
+    "architect_engineer",
+    "reason",
+    "discipline",
+    "referenced_documents",
+    "requested_amount",
+    "proposed_amount",
+    "approved_amount",
+    "final_amount",
+    "line_items",
+    "proposed_completion_date",
+    "approval_date",
+    "approver_name"
+  ],
+  "consistency": "passed",
+  "llm_used": false,
+  "processing_ms": 16.41
+}

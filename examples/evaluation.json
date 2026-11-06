@@ -1,0 +1,217 @@
+{
+  "dataset": "12 hand-authored synthetic cases; development set, not held out",
+  "ground_truth_sha256": "cb0cc92969bc5aec02517f2e55b9fccb6762aa25ff8f985c1324fe69957b8c4e",
+  "configuration": {
+    "ocr": "off",
+    "llm": false,
+    "date_order": "reject",
+    "python": "3.13.9",
+    "platform": "Windows",
+    "dependencies": {
+      "pydantic": "2.14.3",
+      "PyMuPDF": "1.28.2",
+      "simplejson": "3.20.2"
+    }
+  },
+  "documents": 12,
+  "field_comparisons": 372,
+  "counts": {
+    "schema_valid": 12,
+    "fields": 372,
+    "exact": 372,
+    "tp": 143,
+    "numeric": 29,
+    "numeric_correct": 29,
+    "missing": 229,
+    "missing_fp": 0,
+    "status_correct": 12,
+    "document_exact": 12
+  },
+  "metrics": {
+    "field_precision": 1.0,
+    "field_recall": 1.0,
+    "field_f1": 1.0,
+    "field_exact_match": 1.0,
+    "document_exact_match": 1.0,
+    "numeric_accuracy": 1.0,
+    "missing_field_false_positive_rate": 0.0,
+    "schema_validation_rate": 1.0,
+    "status_accuracy": 1.0
+  },
+  "confidence_buckets": {
+    "0.00-0.49": {
+      "count": 0,
+      "correct": 0,
+      "accuracy": null
+    },
+    "0.50-0.69": {
+      "count": 3,
+      "correct": 3,
+      "accuracy": 1.0
+    },
+    "0.70-0.89": {
+      "count": 20,
+      "correct": 20,
+      "accuracy": 1.0
+    },
+    "0.90-1.00": {
+      "count": 120,
+      "correct": 120,
+      "accuracy": 1.0
+    }
+  },
+  "mean_processing_ms": 33.257666666666665,
+  "limitations": "Small synthetic development benchmark with correlated fields. Exact match includes absent fields. Line item collection scored as one top-level field. Conflicts score the documented representative plus mandatory review issues, not an adjudicated true value. Confidence buckets are descriptive, not calibration evidence. OCR/live LLM accuracy is not measured here.",
+  "cases": [
+    {
+      "file": "01_clean.txt",
+      "sha256": "a779042a3df00b1d62b4bc3ed363e8b54eece2b8453a34a54d1179970f6a2b3e",
+      "status": "success",
+      "expected_status": "success",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 33.044,
+      "issues": []
+    },
+    {
+      "file": "02_messy.txt",
+      "sha256": "fd1de64a90bb68b53687c98ea760f3b4642984ba59d83b56afc8065d40df3e6f",
+      "status": "success",
+      "expected_status": "success",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 19.966,
+      "issues": []
+    },
+    {
+      "file": "03_digital.pdf",
+      "sha256": "ae52cea264ba8f78baaef247cac8640638f0f7b0571f316b65c43409dff34d7e",
+      "status": "success",
+      "expected_status": "success",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 215.061,
+      "issues": []
+    },
+    {
+      "file": "04_multipage.pdf",
+      "sha256": "3a77ca71209b4fd16a67ad5b691924d7a2cc2631adf04f5dc4c880fa235f88ba",
+      "status": "success",
+      "expected_status": "success",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 28.802,
+      "issues": []
+    },
+    {
+      "file": "05_missing_amount.txt",
+      "sha256": "b7176ddbc6da289ce20b11ab7764a3a5e4c7bd93d4ad62b06be1a06c0ee352db",
+      "status": "partial",
+      "expected_status": "partial",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 12.199,
+      "issues": [
+        "MISSING_CORE_FIELD"
+      ]
+    },
+    {
+      "file": "06_conflict.txt",
+      "sha256": "25f8404fbe4d9ed2c50ae2fb2f8c3e7e01eb3aecaeb24568c990df824ef2f635",
+      "status": "partial",
+      "expected_status": "partial",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 13.061,
+      "issues": [
+        "CONFLICTING_VALUES"
+      ]
+    },
+    {
+      "file": "07_credit.txt",
+      "sha256": "3507891cb4a88bb79b33254b6ac383f77a5aab534e2097c19f96a19ed8064029",
+      "status": "partial",
+      "expected_status": "partial",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 13.613,
+      "issues": [
+        "AMBIGUOUS_CURRENCY"
+      ]
+    },
+    {
+      "file": "08_cost_items.txt",
+      "sha256": "60e5bdb934bb365585fd2ed5bc175f810adeabdb71941fd3a24c7e179257bb38",
+      "status": "success",
+      "expected_status": "success",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 18.692,
+      "issues": []
+    },
+    {
+      "file": "09_missing_parties.txt",
+      "sha256": "f7d06d4987574f64d1c8526fd7d0f096f73eac6c5545c693dd8232e9aa20a3e1",
+      "status": "success",
+      "expected_status": "success",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 11.22,
+      "issues": []
+    },
+    {
+      "file": "10_ocr_noise.txt",
+      "sha256": "2a8fc5d9506c746d0c896d0000d738d110f4ae6945e12d6bf2becf5b34b83eda",
+      "status": "partial",
+      "expected_status": "partial",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 12.045,
+      "issues": [
+        "NORMALIZATION_REVIEW",
+        "NORMALIZATION_REVIEW",
+        "NORMALIZATION_REVIEW",
+        "NORMALIZATION_REVIEW",
+        "NORMALIZATION_REVIEW",
+        "NORMALIZATION_REVIEW"
+      ]
+    },
+    {
+      "file": "11_ambiguous_revision.txt",
+      "sha256": "c035737c2664797a7d55ce5f4ac5d332030029da3c92def837852b5485d97d39",
+      "status": "partial",
+      "expected_status": "partial",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 12.978,
+      "issues": [
+        "AMBIGUOUS_DATE",
+        "CONFLICTING_VALUES"
+      ]
+    },
+    {
+      "file": "12_unrelated.txt",
+      "sha256": "9182411cbffac1bf2e8fb14a6975c78835bd789da20e470304adcedd889d02e1",
+      "status": "failed",
+      "expected_status": "failed",
+      "status_correct": true,
+      "missing_required_issues": [],
+      "mismatches": [],
+      "processing_ms": 8.411,
+      "issues": [
+        "NOT_CHANGE_ORDER"
+      ]
+    }
+  ]
+}

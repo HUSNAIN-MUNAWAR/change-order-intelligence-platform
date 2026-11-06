@@ -1,0 +1,11 @@
+SYNTHETIC TEST DOCUMENT
+CHANGE ORDER
+Change Order Number: CO-008
+Project: Science Lab Fitout
+Description: Add power and controls for two laboratory exhaust fans.
+Description | Qty | Unit | Unit Price | Amount
+Electrical labor | 20 | hours | 85.00 | USD 1,700.00
+Control cable | 200 | feet | 4.00 | USD 800.00
+Fan disconnects | 2 | each | 250.00 | USD 500.00
+Total Change Amount: USD 3,000.00
+Schedule Impact: 1 calendar day

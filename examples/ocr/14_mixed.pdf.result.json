@@ -1,0 +1,708 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "success",
+  "source": {
+    "identifier": "14_mixed.pdf",
+    "filename": "14_mixed.pdf",
+    "sha256": "648f6b182b184c39a17a2428e84cab2bb194d4a32018d0567407e494105c71ec",
+    "media_type": "application/pdf",
+    "byte_count": 70674,
+    "metadata": {
+      "format": "PDF 1.7",
+      "title": "Synthetic mixed native and scanned OCR fixture",
+      "author": "Synthetic fixture; not supplied by Sledge"
+    },
+    "pages": [
+      {
+        "page": 1,
+        "raw_text": "SYNTHETIC TEST DOCUMENT - NOT SUPPLIED BY SLEDGE\n\nCHANGE ORDER\n\nChange Order Number: CO-003\n\nProject Name: Harbor Warehouse\n\nProject Number: HW-0031\n\nDocument Date: 2026-06-20\n\nContractor: Harbor Build Ltd.\n\nDescription: Upgrade air handling unit AHU-2 with a variable frequency drive.\n\nDiscipline: HVAC\n\nFinal Amount: EUR 6,400.00\n\nSchedule Impact: 0 days\n\nApproval Status: Approved\n\n\n\n\n\nSynthetic construction document | Page 1 of 1",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT - NOT SUPPLIED BY SLEDGE\n\nCHANGE ORDER\n\nChange Order Number: CO-003\n\nProject Name: Harbor Warehouse\n\nProject Number: HW-0031\n\nDocument Date: 2026-06-20\n\nContractor: Harbor Build Ltd.\n\nDescription: Upgrade air handling unit AHU-2 with a variable frequency drive.\n\nDiscipline: HVAC\n\nFinal Amount: EUR 6,400.00\n\nSchedule Impact: 0 days\n\nApproval Status: Approved\n\n\n\n\n\nSynthetic construction document | Page 1 of 1",
+        "native_text": null,
+        "text_origin": "native",
+        "ocr_quality": null
+      },
+      {
+        "page": 2,
+        "raw_text": "SYNTHETIC TEST DOCUMENT - NOT SUPPLIED BY SLEDGE\nCHANGE ORDER\nChange Order Number: CO-003\nProject Name: Harbor Warehouse\nProject Number: HW-0031\nDocument Date: 2026-06-20\nContractor: Harbor Build Ltd.\nDescription: Upgrade air handling unit AHU-2 with a variable frequency drive.\nDiscipline: HVAC\nFinal Amount: EUR 6,400.00\nSchedule Impact: 0 days\nApproval Status: Approved\nSynthetic construction document |   Page 1 of 1",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT - NOT SUPPLIED BY SLEDGE\nCHANGE ORDER\nChange Order Number: CO-003\nProject Name: Harbor Warehouse\nProject Number: HW-0031\nDocument Date: 2026-06-20\nContractor: Harbor Build Ltd.\nDescription: Upgrade air handling unit AHU-2 with a variable frequency drive.\nDiscipline: HVAC\nFinal Amount: EUR 6,400.00\nSchedule Impact: 0 days\nApproval Status: Approved\nSynthetic construction document | Page 1 of 1",
+        "native_text": "",
+        "text_origin": "ocr",
+        "ocr_quality": 0.954
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": "CO-003",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 64,
+          "char_end": 92,
+          "text": "Change Order Number: CO-003\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 62,
+          "char_end": 90,
+          "text": "Change Order Number: CO-003\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": "Harbor Warehouse",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 93,
+          "char_end": 124,
+          "text": "Project Name: Harbor Warehouse\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 90,
+          "char_end": 121,
+          "text": "Project Name: Harbor Warehouse\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": "HW-0031",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 125,
+          "char_end": 149,
+          "text": "Project Number: HW-0031\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 121,
+          "char_end": 145,
+          "text": "Project Number: HW-0031\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": "CHANGE ORDER",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 50,
+          "char_end": 63,
+          "text": "CHANGE ORDER\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 2,
+          "line_end": 2,
+          "char_start": 49,
+          "char_end": 62,
+          "text": "CHANGE ORDER\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "title",
+      "validation": "valid",
+      "signals": [
+        "title_base=0.86",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": "2026-06-20",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 11,
+          "line_end": 11,
+          "char_start": 150,
+          "char_end": 176,
+          "text": "Document Date: 2026-06-20\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 6,
+          "line_end": 6,
+          "char_start": 145,
+          "char_end": 171,
+          "text": "Document Date: 2026-06-20\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "revision": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "contractor": {
+      "value": "Harbor Build Ltd.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 13,
+          "line_end": 13,
+          "char_start": 177,
+          "char_end": 207,
+          "text": "Contractor: Harbor Build Ltd.\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 171,
+          "char_end": 201,
+          "text": "Contractor: Harbor Build Ltd.\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "owner": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "description": {
+      "value": "Upgrade air handling unit AHU-2 with a variable frequency drive.",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 15,
+          "line_end": 15,
+          "char_start": 208,
+          "char_end": 286,
+          "text": "Description: Upgrade air handling unit AHU-2 with a variable frequency drive.\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 201,
+          "char_end": 279,
+          "text": "Description: Upgrade air handling unit AHU-2 with a variable frequency drive.\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "reason": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": "HVAC",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 17,
+          "line_end": 17,
+          "char_start": 287,
+          "char_end": 304,
+          "text": "Discipline: HVAC\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 279,
+          "char_end": 296,
+          "text": "Discipline: HVAC\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": 6400.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 19,
+          "line_end": 19,
+          "char_start": 305,
+          "char_end": 332,
+          "text": "Final Amount: EUR 6,400.00\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 296,
+          "char_end": 323,
+          "text": "Final Amount: EUR 6,400.00\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "requested_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": 6400.00,
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 19,
+          "line_end": 19,
+          "char_start": 305,
+          "char_end": 332,
+          "text": "Final Amount: EUR 6,400.00\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 296,
+          "char_end": 323,
+          "text": "Final Amount: EUR 6,400.00\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03"
+      ],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": "final",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 19,
+          "line_end": 19,
+          "char_start": 305,
+          "char_end": 332,
+          "text": "Final Amount: EUR 6,400.00\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 296,
+          "char_end": 323,
+          "text": "Final Amount: EUR 6,400.00\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "amount_role_in_source"
+      ],
+      "alternatives": []
+    },
+    "currency": {
+      "value": "EUR",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 19,
+          "line_end": 19,
+          "char_start": 305,
+          "char_end": 332,
+          "text": "Final Amount: EUR 6,400.00\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 10,
+          "line_end": 10,
+          "char_start": 296,
+          "char_end": 323,
+          "text": "Final Amount: EUR 6,400.00\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": 0,
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 21,
+          "line_end": 21,
+          "char_start": 333,
+          "char_end": 357,
+          "text": "Schedule Impact: 0 days\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 11,
+          "line_end": 11,
+          "char_start": 323,
+          "char_end": 347,
+          "text": "Schedule Impact: 0 days\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": "days",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 21,
+          "line_end": 21,
+          "char_start": 333,
+          "char_end": 357,
+          "text": "Schedule Impact: 0 days\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 11,
+          "line_end": 11,
+          "char_start": 323,
+          "char_end": 347,
+          "text": "Schedule Impact: 0 days\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": "approved",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "14_mixed.pdf",
+          "page": 1,
+          "line_start": 23,
+          "line_end": 23,
+          "char_start": 358,
+          "char_end": 384,
+          "text": "Approval Status: Approved\n",
+          "text_origin": "native"
+        },
+        {
+          "source": "14_mixed.pdf",
+          "page": 2,
+          "line_start": 12,
+          "line_end": 12,
+          "char_start": 347,
+          "char_end": 373,
+          "text": "Approval Status: Approved\n",
+          "text_origin": "ocr"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    }
+  },
+  "issues": [
+    {
+      "code": "OCR_USED",
+      "severity": "info",
+      "message": "Local OCR used on page 2; review recognition errors",
+      "field": null,
+      "evidence": null
+    }
+  ],
+  "missing_fields": [
+    "revision",
+    "subcontractor",
+    "owner",
+    "architect_engineer",
+    "reason",
+    "referenced_documents",
+    "requested_amount",
+    "proposed_amount",
+    "approved_amount",
+    "previous_contract_amount",
+    "revised_contract_amount",
+    "credits_deductions",
+    "line_items",
+    "proposed_completion_date",
+    "approval_date",
+    "approver_name"
+  ],
+  "consistency": "not_checked",
+  "llm_used": false,
+  "processing_ms": 839.807
+}

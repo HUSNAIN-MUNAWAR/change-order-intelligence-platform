@@ -1,0 +1,12 @@
+SYNTHETIC TEST DOCUMENT
+CHANGE ORDER
+Change Order #: CO-005
+Project: Library Renewal
+Project ID: LIB-22
+Contractor: Cedar General Contractors
+Description: Replace corroded domestic water riser at stair B.
+Reason: Concealed site condition.
+Discipline: Plumbing
+Total Change Amount: TBD
+Schedule Impact: No change
+Approval Status: Proposed

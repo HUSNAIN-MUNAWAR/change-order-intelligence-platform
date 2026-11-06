@@ -1,0 +1,16 @@
+SYNTHETIC TEST DOCUMENT
+change order
+  cO No.  :   0007-B
+PROJECT NAME : West Annex Renovation
+Job # : WA-008
+date issued : June 18, 2026
+contractor : Mason Building Co.
+scope of work:
+  Reroute chilled water piping above the corridor ceiling.
+  Provide two isolation valves and restore insulation.
+reason:
+  Existing beam conflicts with the coordinated HVAC route.
+trade : HVAC
+proposed amount : USD 8,750.50
+time extension : 2 working days
+status : Pending approval

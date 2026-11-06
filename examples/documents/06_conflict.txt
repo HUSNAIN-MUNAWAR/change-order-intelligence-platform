@@ -1,0 +1,8 @@
+SYNTHETIC TEST DOCUMENT - deliberately contradictory
+CHANGE ORDER
+Change Order Number: CO-006
+Project Name: Airport Service Building
+Total Change Amount: USD 18,000.00
+Description: Add galvanized support frames for rooftop equipment.
+Total Change Amount: USD 19,500.00
+Approval Status: Pending

@@ -1,0 +1,44 @@
+{
+  "dataset": "external public documents with manually reviewed labels",
+  "platform": "Windows",
+  "ground_truth_is_model_independent": true,
+  "documents": 1,
+  "counts": {
+    "annotated_fields": 9,
+    "correct": 9,
+    "predicted_non_null": 9,
+    "expected_non_null": 9,
+    "false_positives": 0,
+    "unsupported_checked": 8,
+    "unsupported_false_positives": 0
+  },
+  "metrics": {
+    "annotated_field_exact_match": 1.0,
+    "field_precision": 1.0,
+    "field_recall": 1.0,
+    "field_f1": 1.0,
+    "unsupported_field_false_positive_rate": 0.0
+  },
+  "split_counts": {
+    "development": 1
+  },
+  "limitations": "One development document is currently available locally. It was inspected during a generalized extractor fix and is not held out. Public source availability and redistribution rights vary; candidate sources are documented separately and unclear documents are not copied into the repository.",
+  "cases": [
+    {
+      "file": "fresno-change-order.pdf",
+      "split": "development",
+      "status": "partial",
+      "source_mode": [
+        "native"
+      ],
+      "processing_ms": 222.148,
+      "annotated_fields": 9,
+      "mismatches": [],
+      "issues": [
+        "CONFLICTING_VALUES",
+        "CONTRACT_TOTAL_MISMATCH"
+      ],
+      "sha256": "233c8f0a33f115548d95b8576323c3c31da6fe267ae74d5e42fedb95c01e06fa"
+    }
+  ]
+}

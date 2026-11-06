@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #17212f;
+  --muted: #708096;
+  --line: #dce4ed;
+  --surface: #ffffff;
+  --canvas: #f4f7fa;
+  --accent: #d36b3c;
+  --accent-deep: #a64a25;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--canvas); }
+body { margin: 0; background: var(--canvas); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+button, input, select { font: inherit; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid rgba(211, 107, 60, .28); outline-offset: 2px; }
+.shell { min-height: 100vh; }
+.paper-grid { background-image: linear-gradient(rgba(220, 228, 237, .33) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 228, 237, .33) 1px, transparent 1px); background-size: 28px 28px; }
+.dark .paper-grid { background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); }
+.dark { --ink: #edf3f8; --muted: #9eacba; --line: #2b3948; --surface: #17212f; --canvas: #0f1722; --accent: #f29a67; --accent-deep: #ffb087; }
+.dark body { background: var(--canvas); }
+.brand-mark { background: var(--accent); color: #fff; box-shadow: 0 8px 20px rgba(211, 107, 60, .24); }
+.accent-button { background: var(--accent); color: #fff; transition: background .15s ease, transform .15s ease; }
+.accent-button:hover { background: var(--accent-deep); transform: translateY(-1px); }
+.muted-button { background: var(--surface); border: 1px solid var(--line); }
+.muted-button:hover { border-color: var(--accent); color: var(--accent-deep); }
+.panel { background: var(--surface); border: 1px solid var(--line); box-shadow: 0 12px 34px rgba(23, 33, 47, .045); }
+.eyebrow { color: var(--accent-deep); font-size: 11px; letter-spacing: .18em; font-weight: 700; }
+.dropzone { border: 1px dashed #b9c7d5; background: rgba(255,255,255,.52); transition: border .15s ease, background .15s ease; }
+.dark .dropzone { background: rgba(23,33,47,.58); }
+.dropzone.active, .dropzone:hover { border-color: var(--accent); background: rgba(211,107,60,.07); }
+.field-card { border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 92%, var(--canvas)); }
+.mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr !important; } }

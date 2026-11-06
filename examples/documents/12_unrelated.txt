@@ -1,0 +1,7 @@
+SYNTHETIC TEST DOCUMENT - unrelated input
+OFFICE CATERING INVOICE
+Invoice Number: INV-424
+Project: Summer Picnic
+Total Amount: USD 425.00
+Date: 2026-06-30
+Please deliver sandwiches to reception.

@@ -1,0 +1,11 @@
+SYNTHETIC TEST DOCUMENT
+CHANGE ORDER
+CO Number: CR-0009
+Project: Civic Hall
+Description: Omit duplicate branch conduit and associated labor.
+Credit: ($1,200.00)
+Total Change Amount: USD -1,200.00
+Previous Contract Amount: USD 50,000.00
+Revised Contract Amount: USD 48,800.00
+Schedule Impact: -1 days
+Approval Status: Approved

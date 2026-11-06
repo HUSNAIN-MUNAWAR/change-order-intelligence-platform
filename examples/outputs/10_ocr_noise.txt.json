@@ -1,0 +1,588 @@
+{
+  "schema_version": "1.0",
+  "pipeline_version": "0.1.0",
+  "status": "partial",
+  "source": {
+    "identifier": "10_ocr_noise.txt",
+    "filename": "10_ocr_noise.txt",
+    "sha256": "2a8fc5d9506c746d0c896d0000d738d110f4ae6945e12d6bf2becf5b34b83eda",
+    "media_type": "text/plain",
+    "byte_count": 317,
+    "metadata": {},
+    "pages": [
+      {
+        "page": null,
+        "raw_text": "SYNTHETIC TEST DOCUMENT - simulated OCR noise, not actual OCR output\nCHANGE 0RDER\nCHANGE 0RDER NUMBER: 0010-A\nPR0JECT NAME: South Clinic\nC0NTRACT0R: Oak Site Services\nDESCRIPTI0N: Relocate three sprinkler heads clear of new ductwork.\nT0TAL CHANGE AM0UNT: USD 2,450.00\nSCHEDULE IMPACT: 2 days\nAPPR0VAL STATUS: Pending\n",
+        "cleaned_text": "SYNTHETIC TEST DOCUMENT - simulated OCR noise, not actual OCR output\nCHANGE 0RDER\nCHANGE 0RDER NUMBER: 0010-A\nPR0JECT NAME: South Clinic\nC0NTRACT0R: Oak Site Services\nDESCRIPTI0N: Relocate three sprinkler heads clear of new ductwork.\nT0TAL CHANGE AM0UNT: USD 2,450.00\nSCHEDULE IMPACT: 2 days\nAPPR0VAL STATUS: Pending",
+        "native_text": null,
+        "text_origin": "text",
+        "ocr_quality": null
+      }
+    ]
+  },
+  "data": {
+    "change_order_number": {
+      "value": "0010-A",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 3,
+          "line_end": 3,
+          "char_start": 82,
+          "char_end": 110,
+          "text": "CHANGE 0RDER NUMBER: 0010-A\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "warning",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "ocr_label_repair=-0.15"
+      ],
+      "alternatives": []
+    },
+    "project_name": {
+      "value": "South Clinic",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 4,
+          "line_end": 4,
+          "char_start": 110,
+          "char_end": 137,
+          "text": "PR0JECT NAME: South Clinic\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "warning",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "ocr_label_repair=-0.15"
+      ],
+      "alternatives": []
+    },
+    "project_number": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "document_title": {
+      "value": "CHANGE 0RDER",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 2,
+          "line_end": 2,
+          "char_start": 69,
+          "char_end": 82,
+          "text": "CHANGE 0RDER\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "title",
+      "validation": "valid",
+      "signals": [
+        "title_base=0.86",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "document_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revision": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "contractor": {
+      "value": "Oak Site Services",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 5,
+          "line_end": 5,
+          "char_start": 137,
+          "char_end": 167,
+          "text": "C0NTRACT0R: Oak Site Services\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "warning",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "ocr_label_repair=-0.15"
+      ],
+      "alternatives": []
+    },
+    "subcontractor": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "owner": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "architect_engineer": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "description": {
+      "value": "Relocate three sprinkler heads clear of new ductwork.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 6,
+          "line_end": 6,
+          "char_start": 167,
+          "char_end": 234,
+          "text": "DESCRIPTI0N: Relocate three sprinkler heads clear of new ductwork.\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "warning",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "ocr_label_repair=-0.15"
+      ],
+      "alternatives": []
+    },
+    "reason": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "discipline": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "referenced_documents": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "total_change_amount": {
+      "value": 2450.00,
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 234,
+          "char_end": 268,
+          "text": "T0TAL CHANGE AM0UNT: USD 2,450.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "warning",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "typed_parse=+0.03",
+        "ocr_label_repair=-0.15"
+      ],
+      "alternatives": []
+    },
+    "requested_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "proposed_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approved_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "final_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "amount_basis": {
+      "value": "stated_total",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 234,
+          "char_end": 268,
+          "text": "T0TAL CHANGE AM0UNT: USD 2,450.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "warning",
+      "signals": [
+        "amount_role_in_source"
+      ],
+      "alternatives": []
+    },
+    "currency": {
+      "value": "USD",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 7,
+          "line_end": 7,
+          "char_start": 234,
+          "char_end": 268,
+          "text": "T0TAL CHANGE AM0UNT: USD 2,450.00\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "warning",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "ocr_label_repair=-0.15"
+      ],
+      "alternatives": []
+    },
+    "previous_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "revised_contract_amount": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "credits_deductions": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "line_items": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "schedule_impact": {
+      "value": 2,
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 268,
+          "char_end": 292,
+          "text": "SCHEDULE IMPACT: 2 days\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "schedule_unit": {
+      "value": "days",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 8,
+          "line_end": 8,
+          "char_start": 268,
+          "char_end": 292,
+          "text": "SCHEDULE IMPACT: 2 days\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "valid",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified"
+      ],
+      "alternatives": []
+    },
+    "proposed_completion_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approval_status": {
+      "value": "pending",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "source": "10_ocr_noise.txt",
+          "page": null,
+          "line_start": 9,
+          "line_end": 9,
+          "char_start": 292,
+          "char_end": 317,
+          "text": "APPR0VAL STATUS: Pending\n",
+          "text_origin": "text"
+        }
+      ],
+      "method": "label",
+      "validation": "warning",
+      "signals": [
+        "label_base=0.90",
+        "source_evidence_verified",
+        "ocr_label_repair=-0.15"
+      ],
+      "alternatives": []
+    },
+    "approval_date": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    },
+    "approver_name": {
+      "value": null,
+      "confidence": 0.0,
+      "evidence": null,
+      "method": "missing",
+      "validation": "missing",
+      "signals": [],
+      "alternatives": []
+    }
+  },
+  "issues": [
+    {
+      "code": "NORMALIZATION_REVIEW",
+      "severity": "warning",
+      "message": "Review normalization signals: ocr_label_repair",
+      "field": "change_order_number",
+      "evidence": {
+        "source": "10_ocr_noise.txt",
+        "page": null,
+        "line_start": 3,
+        "line_end": 3,
+        "char_start": 82,
+        "char_end": 110,
+        "text": "CHANGE 0RDER NUMBER: 0010-A\n",
+        "text_origin": "text"
+      }
+    },
+    {
+      "code": "NORMALIZATION_REVIEW",
+      "severity": "warning",
+      "message": "Review normalization signals: ocr_label_repair",
+      "field": "project_name",
+      "evidence": {
+        "source": "10_ocr_noise.txt",
+        "page": null,
+        "line_start": 4,
+        "line_end": 4,
+        "char_start": 110,
+        "char_end": 137,
+        "text": "PR0JECT NAME: South Clinic\n",
+        "text_origin": "text"
+      }
+    },
+    {
+      "code": "NORMALIZATION_REVIEW",
+      "severity": "warning",
+      "message": "Review normalization signals: ocr_label_repair",
+      "field": "contractor",
+      "evidence": {
+        "source": "10_ocr_noise.txt",
+        "page": null,
+        "line_start": 5,
+        "line_end": 5,
+        "char_start": 137,
+        "char_end": 167,
+        "text": "C0NTRACT0R: Oak Site Services\n",
+        "text_origin": "text"
+      }
+    },
+    {
+      "code": "NORMALIZATION_REVIEW",
+      "severity": "warning",
+      "message": "Review normalization signals: ocr_label_repair",
+      "field": "description",
+      "evidence": {
+        "source": "10_ocr_noise.txt",
+        "page": null,
+        "line_start": 6,
+        "line_end": 6,
+        "char_start": 167,
+        "char_end": 234,
+        "text": "DESCRIPTI0N: Relocate three sprinkler heads clear of new ductwork.\n",
+        "text_origin": "text"
+      }
+    },
+    {
+      "code": "NORMALIZATION_REVIEW",
+      "severity": "warning",
+      "message": "Review normalization signals: ocr_label_repair",
+      "field": "total_change_amount",
+      "evidence": {
+        "source": "10_ocr_noise.txt",
+        "page": null,
+        "line_start": 7,
+        "line_end": 7,
+        "char_start": 234,
+        "char_end": 268,
+        "text": "T0TAL CHANGE AM0UNT: USD 2,450.00\n",
+        "text_origin": "text"
+      }
+    },
+    {
+      "code": "NORMALIZATION_REVIEW",
+      "severity": "warning",
+      "message": "Review normalization signals: ocr_label_repair",
+      "field": "approval_status",
+      "evidence": {
+        "source": "10_ocr_noise.txt",
+        "page": null,
+        "line_start": 9,
+        "line_end": 9,
+        "char_start": 292,
+        "char_end": 317,
+        "text": "APPR0VAL STATUS: Pending\n",
+        "text_origin": "text"
+      }
+    }
+  ],
+  "missing_fields": [
+    "project_number",
+    "document_date",
+    "revision",
+    "subcontractor",
+    "owner",
+    "architect_engineer",
+    "reason",
+    "discipline",
+    "referenced_documents",
+    "requested_amount",
+    "proposed_amount",
+    "approved_amount",
+    "final_amount",
+    "previous_contract_amount",
+    "revised_contract_amount",
+    "credits_deductions",
+    "line_items",
+    "proposed_completion_date",
+    "approval_date",
+    "approver_name"
+  ],
+  "consistency": "not_checked",
+  "llm_used": false,
+  "processing_ms": 21.206
+}

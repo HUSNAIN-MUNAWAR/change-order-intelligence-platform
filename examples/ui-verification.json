@@ -1,0 +1,23 @@
+{
+  "url": "http://127.0.0.1:8501",
+  "browser": "msedge",
+  "desktop_viewport": [
+    1512,
+    1700
+  ],
+  "mobile_viewport": [
+    390,
+    844
+  ],
+  "real_ocr_through_streamlit": true,
+  "source_preview_visible": true,
+  "field_value_6400_visible": true,
+  "evidence_quote_visible": true,
+  "json_download_schema_validated": true,
+  "json_copy_matches_download": true,
+  "mobile_no_horizontal_overflow": true,
+  "mobile_results_stack_vertically": true,
+  "app_external_requests": [],
+  "screenshot": "docs/images/streamlit-demo.png",
+  "scanned_total_confidence": 0.741
+}

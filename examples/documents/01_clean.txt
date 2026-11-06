@@ -1,0 +1,23 @@
+SYNTHETIC TEST DOCUMENT - not supplied by Sledge
+CHANGE ORDER
+Change Order Number: CO-001
+Project Name: Riverside Medical Center
+Project Number: RMC-2026-014
+Document Date: 2026-06-15
+Revision: A
+Contractor: Alder Construction LLC
+Subcontractor: Summit Electrical Inc.
+Owner: Riverside Health Trust
+Architect / Engineer: Northline Design Group
+Description of Change: Install six additional emergency lighting circuits in the east wing.
+Reason for Change: Owner-directed life safety upgrade.
+Discipline: Electrical
+Referenced Documents: E-201 Rev C; RFI-087
+Total Change Amount: USD 12,500.00
+Previous Contract Amount: USD 250,000.00
+Revised Contract Amount: USD 262,500.00
+Schedule Impact: 3 calendar days
+Proposed Completion Date: 2026-09-18
+Approval Status: Approved
+Approval Date: 2026-06-17
+Approver Name: Jordan Lee

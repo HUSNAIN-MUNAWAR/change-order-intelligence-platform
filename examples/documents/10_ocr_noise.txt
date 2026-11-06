@@ -1,0 +1,9 @@
+SYNTHETIC TEST DOCUMENT - simulated OCR noise, not actual OCR output
+CHANGE 0RDER
+CHANGE 0RDER NUMBER: 0010-A
+PR0JECT NAME: South Clinic
+C0NTRACT0R: Oak Site Services
+DESCRIPTI0N: Relocate three sprinkler heads clear of new ductwork.
+T0TAL CHANGE AM0UNT: USD 2,450.00
+SCHEDULE IMPACT: 2 days
+APPR0VAL STATUS: Pending

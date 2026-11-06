@@ -1,0 +1,52 @@
+{
+  "description": "Hand-authored synthetic ground truth. Unlisted fields are null; all top-level fields are scored. Conflict winners follow documented strongest/first source policy, with mandatory review signals. No employer documents are included.",
+  "cases": {
+    "01_clean.txt": {
+      "status": "success",
+      "fields": {
+        "document_title": "CHANGE ORDER", "change_order_number": "CO-001", "project_name": "Riverside Medical Center", "project_number": "RMC-2026-014", "document_date": "2026-06-15", "revision": "A", "contractor": "Alder Construction LLC", "subcontractor": "Summit Electrical Inc.", "owner": "Riverside Health Trust", "architect_engineer": "Northline Design Group", "description": "Install six additional emergency lighting circuits in the east wing.", "reason": "Owner-directed life safety upgrade.", "discipline": "Electrical", "referenced_documents": ["E-201 Rev C", "RFI-087"], "total_change_amount": 12500.00, "amount_basis": "stated_total", "currency": "USD", "previous_contract_amount": 250000.00, "revised_contract_amount": 262500.00, "schedule_impact": 3, "schedule_unit": "calendar_days", "proposed_completion_date": "2026-09-18", "approval_status": "approved", "approval_date": "2026-06-17", "approver_name": "Jordan Lee"
+      }
+    },
+    "02_messy.txt": {
+      "status": "success",
+      "fields": {"document_title": "change order", "change_order_number": "0007-B", "project_name": "West Annex Renovation", "project_number": "WA-008", "document_date": "2026-06-18", "contractor": "Mason Building Co.", "description": "Reroute chilled water piping above the corridor ceiling.\nProvide two isolation valves and restore insulation.", "reason": "Existing beam conflicts with the coordinated HVAC route.", "discipline": "HVAC", "proposed_amount": 8750.50, "total_change_amount": 8750.50, "amount_basis": "proposed", "currency": "USD", "schedule_impact": 2, "schedule_unit": "working_days", "approval_status": "pending"}
+    },
+    "03_digital.pdf": {
+      "status": "success",
+      "fields": {"document_title": "CHANGE ORDER", "change_order_number": "CO-003", "project_name": "Harbor Warehouse", "project_number": "HW-0031", "document_date": "2026-06-20", "contractor": "Harbor Build Ltd.", "description": "Upgrade air handling unit AHU-2 with a variable frequency drive.", "discipline": "HVAC", "final_amount": 6400, "total_change_amount": 6400, "amount_basis": "final", "currency": "EUR", "schedule_impact": 0, "schedule_unit": "days", "approval_status": "approved"}
+    },
+    "04_multipage.pdf": {
+      "status": "success",
+      "fields": {"document_title": "CHANGE ORDER", "change_order_number": "CO-004", "project_name": "Meadow School Addition", "project_number": "MSA-18", "document_date": "2026-06-22", "contractor": "Meadow Builders", "description": "Extend storm drainage to the relocated outfall.", "reason": "Revised civil grading design.", "referenced_documents": ["C-402 Rev D", "RFI-102"], "total_change_amount": 15300, "amount_basis": "stated_total", "currency": "USD", "previous_contract_amount": 400000, "revised_contract_amount": 415300, "schedule_impact": 5, "schedule_unit": "calendar_days", "approval_status": "pending"}
+    },
+    "05_missing_amount.txt": {
+      "status": "partial",
+      "fields": {"document_title": "CHANGE ORDER", "change_order_number": "CO-005", "project_name": "Library Renewal", "project_number": "LIB-22", "contractor": "Cedar General Contractors", "description": "Replace corroded domestic water riser at stair B.", "reason": "Concealed site condition.", "discipline": "Plumbing", "schedule_impact": 0, "approval_status": "proposed"}
+    },
+    "06_conflict.txt": {
+      "status": "partial", "required_issues": ["CONFLICTING_VALUES"],
+      "fields": {"document_title": "CHANGE ORDER", "change_order_number": "CO-006", "project_name": "Airport Service Building", "total_change_amount": 18000, "amount_basis": "stated_total", "currency": "USD", "description": "Add galvanized support frames for rooftop equipment.", "approval_status": "pending"}
+    },
+    "07_credit.txt": {
+      "status": "partial", "required_issues": ["AMBIGUOUS_CURRENCY"],
+      "fields": {"document_title": "CHANGE ORDER", "change_order_number": "CR-0009", "project_name": "Civic Hall", "description": "Omit duplicate branch conduit and associated labor.", "credits_deductions": -1200, "total_change_amount": -1200, "amount_basis": "stated_total", "currency": "USD", "previous_contract_amount": 50000, "revised_contract_amount": 48800, "schedule_impact": -1, "schedule_unit": "days", "approval_status": "approved"}
+    },
+    "08_cost_items.txt": {
+      "status": "success",
+      "fields": {"document_title": "CHANGE ORDER", "change_order_number": "CO-008", "project_name": "Science Lab Fitout", "description": "Add power and controls for two laboratory exhaust fans.", "total_change_amount": 3000, "amount_basis": "stated_total", "currency": "USD", "schedule_impact": 1, "schedule_unit": "calendar_days", "line_items": [{"description": "Electrical labor", "quantity": 20, "unit": "hours", "unit_price": 85, "amount": 1700}, {"description": "Control cable", "quantity": 200, "unit": "feet", "unit_price": 4, "amount": 800}, {"description": "Fan disconnects", "quantity": 2, "unit": "each", "unit_price": 250, "amount": 500}]}
+    },
+    "09_missing_parties.txt": {
+      "status": "success",
+      "fields": {"document_title": "CHANGE ORDER", "change_order_number": "CO-009", "project_name": "North Depot", "description": "Add trench shoring after discovery of unstable soil.", "reason": "Unforeseen site condition.", "total_change_amount": 4250, "amount_basis": "stated_total"}
+    },
+    "10_ocr_noise.txt": {
+      "status": "partial",
+      "fields": {"document_title": "CHANGE 0RDER", "change_order_number": "0010-A", "project_name": "South Clinic", "contractor": "Oak Site Services", "description": "Relocate three sprinkler heads clear of new ductwork.", "total_change_amount": 2450, "amount_basis": "stated_total", "currency": "USD", "schedule_impact": 2, "schedule_unit": "days", "approval_status": "pending"}
+    },
+    "11_ambiguous_revision.txt": {
+      "status": "partial", "required_issues": ["AMBIGUOUS_DATE", "CONFLICTING_VALUES"],
+      "fields": {"document_title": "CHANGE ORDER", "change_order_number": "CO-011", "project_name": "Central Station", "revision": "A", "requested_amount": 7800, "approved_amount": 7200, "total_change_amount": 7200, "amount_basis": "approved", "currency": "USD", "approval_date": "2026-07-09", "approval_status": "approved"}
+    },
+    "12_unrelated.txt": {"status": "failed", "required_issues": ["NOT_CHANGE_ORDER"], "fields": {}}
+  }
+}
