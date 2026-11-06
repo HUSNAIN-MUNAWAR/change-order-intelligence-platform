@@ -63,7 +63,37 @@ The system reads native text when available and falls back to local Tesseract OC
 
 ## 5. Architecture
 
-See the full Mermaid diagrams in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md). The short flow is:
+The extraction workspace keeps the browser experience, API transport and deterministic extraction engine separate:
+
+```mermaid
+flowchart LR
+    Browser["Next.js workspace"] --> API["FastAPI /api/v1"]
+    API --> Engine["changeorder.pipeline.extract"]
+    Engine --> Reader["Readers + PyMuPDF"]
+    Reader --> OCR["Optional local Tesseract OCR"]
+    Engine --> Candidates["Candidates + normalization"]
+    Candidates --> Reconcile["Reconciliation + validation"]
+    Reconcile --> Result["ExtractionResult JSON"]
+    Result --> Evidence["Evidence + confidence + warnings"]
+```
+
+The request lifecycle is:
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Next as Next.js
+    participant FastAPI
+    participant Pipeline
+    User->>Next: Upload document and options
+    Next->>FastAPI: POST /api/v1/extract
+    FastAPI->>Pipeline: extract(...)
+    Pipeline-->>FastAPI: Validated ExtractionResult
+    FastAPI-->>Next: JSON with evidence and warnings
+    Next-->>User: Review fields, confidence and source evidence
+```
+
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full Mermaid diagrams and design notes.
 
 ```text
 Next.js -> FastAPI -> changeorder.pipeline.extract
@@ -168,7 +198,15 @@ Existing interfaces:
 
 ## 11. Application screenshots
 
-[`docs/images/nextjs-demo.png`](docs/images/nextjs-demo.png) is a screenshot captured from the running Next.js + FastAPI application with the included synthetic fixture. [`docs/images/streamlit-demo.png`](docs/images/streamlit-demo.png) is the existing Streamlit evidence image.
+These screenshots were captured from the working application using the included synthetic fixtures.
+
+### Next.js + FastAPI workspace
+
+![Next.js + FastAPI extraction workspace](docs/images/nextjs-demo.png)
+
+### Streamlit demonstration
+
+![Streamlit change-order extraction demo](docs/images/streamlit-demo.png)
 
 ## 12. API reference
 
