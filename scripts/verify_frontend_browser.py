@@ -63,7 +63,9 @@ def main() -> int:
         mobile = browser.new_context(viewport={"width": 390, "height": 844}, is_mobile=True)
         mobile_page = mobile.new_page()
         mobile_page.goto(args.url, wait_until="networkidle")
-        expect(mobile_page.get_by_role("button", name="Extract change order", exact=True)).to_be_visible()
+        expect(
+            mobile_page.get_by_role("button", name="Extract change order", exact=True)
+        ).to_be_visible()
         assert mobile_page.evaluate("document.documentElement.scrollWidth <= window.innerWidth")
         mobile_page.get_by_text("Clean change order", exact=True).click()
         mobile_page.get_by_role("button", name="Extract change order", exact=True).click()

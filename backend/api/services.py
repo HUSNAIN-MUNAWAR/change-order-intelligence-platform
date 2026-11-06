@@ -55,7 +55,9 @@ def _content_matches(filename: str, payload: bytes) -> bool:
     return False
 
 
-def validate_upload(filename: str | None, content_type: str | None, payload: bytes) -> UploadedDocument:
+def validate_upload(
+    filename: str | None, content_type: str | None, payload: bytes
+) -> UploadedDocument:
     name = safe_filename(filename)
     suffix = Path(name).suffix.lower()
     if suffix not in SUPPORTED_SUFFIXES:
@@ -63,9 +65,13 @@ def validate_upload(filename: str | None, content_type: str | None, payload: byt
     if not payload:
         raise ApiInputError("EMPTY_INPUT", "The uploaded file is empty", 400)
     if len(payload) > settings.max_file_bytes:
-        raise ApiInputError("INPUT_LIMIT", "The uploaded file exceeds the configured byte limit", 413)
+        raise ApiInputError(
+            "INPUT_LIMIT", "The uploaded file exceeds the configured byte limit", 413
+        )
     if not _content_matches(name, payload):
-        raise ApiInputError("MIME_MISMATCH", "The filename extension does not match the file content", 415)
+        raise ApiInputError(
+            "MIME_MISMATCH", "The filename extension does not match the file content", 415
+        )
     allowed_types = {
         ".pdf": {"application/pdf", "application/octet-stream"},
         ".txt": {"text/plain", "application/octet-stream"},
@@ -74,7 +80,9 @@ def validate_upload(filename: str | None, content_type: str | None, payload: byt
         ".jpeg": {"image/jpeg", "application/octet-stream"},
     }
     if content_type and content_type not in allowed_types[suffix]:
-        raise ApiInputError("MIME_MISMATCH", "The declared media type does not match the file extension", 415)
+        raise ApiInputError(
+            "MIME_MISMATCH", "The declared media type does not match the file extension", 415
+        )
     return UploadedDocument(name, content_type, payload)
 
 

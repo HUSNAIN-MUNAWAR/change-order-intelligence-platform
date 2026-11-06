@@ -28,12 +28,27 @@ def normalize(value):
 def evaluate(documents_dir: Path) -> dict:
     labels_dir = ROOT / "benchmarks" / "ground_truth"
     cases = []
-    counts = {"annotated_fields": 0, "correct": 0, "predicted_non_null": 0, "expected_non_null": 0, "false_positives": 0, "unsupported_checked": 0, "unsupported_false_positives": 0}
+    counts = {
+        "annotated_fields": 0,
+        "correct": 0,
+        "predicted_non_null": 0,
+        "expected_non_null": 0,
+        "false_positives": 0,
+        "unsupported_checked": 0,
+        "unsupported_false_positives": 0,
+    }
     for label_path in sorted(labels_dir.glob("*.json")):
         expected = json.loads(label_path.read_text(encoding="utf-8"))
         input_path = documents_dir / expected["filename"]
         if not input_path.exists():
-            cases.append({"file": expected["filename"], "split": expected["split"], "status": "not_run", "error": "Local source file is absent; download it according to sources.csv."})
+            cases.append(
+                {
+                    "file": expected["filename"],
+                    "split": expected["split"],
+                    "status": "not_run",
+                    "error": "Local source file is absent; download it according to sources.csv.",
+                }
+            )
             continue
         started = time.perf_counter()
         result = extract(input_path)
@@ -54,17 +69,19 @@ def evaluate(documents_dir: Path) -> dict:
             counts["unsupported_checked"] += 1
             actual = normalize(getattr(result.data, name).value)
             counts["unsupported_false_positives"] += actual is not None
-        cases.append({
-            "file": expected["filename"],
-            "split": expected["split"],
-            "status": result.status,
-            "source_mode": sorted({page.text_origin for page in result.source.pages}),
-            "processing_ms": elapsed_ms,
-            "annotated_fields": len(expected["fields"]),
-            "mismatches": mismatches,
-            "issues": [issue.code for issue in result.issues],
-            "sha256": result.source.sha256,
-        })
+        cases.append(
+            {
+                "file": expected["filename"],
+                "split": expected["split"],
+                "status": result.status,
+                "source_mode": sorted({page.text_origin for page in result.source.pages}),
+                "processing_ms": elapsed_ms,
+                "annotated_fields": len(expected["fields"]),
+                "mismatches": mismatches,
+                "issues": [issue.code for issue in result.issues],
+                "sha256": result.source.sha256,
+            }
+        )
     annotated = counts["annotated_fields"]
     precision_denominator = counts["predicted_non_null"]
     recall_denominator = counts["expected_non_null"]
@@ -81,9 +98,15 @@ def evaluate(documents_dir: Path) -> dict:
             "field_precision": precision,
             "field_recall": recall,
             "field_f1": 2 * precision * recall / (precision + recall) if precision + recall else 0,
-            "unsupported_field_false_positive_rate": counts["unsupported_false_positives"] / counts["unsupported_checked"] if counts["unsupported_checked"] else 0,
+            "unsupported_field_false_positive_rate": counts["unsupported_false_positives"]
+            / counts["unsupported_checked"]
+            if counts["unsupported_checked"]
+            else 0,
         },
-        "split_counts": {split: sum(case.get("split") == split for case in cases) for split in {case.get("split") for case in cases}},
+        "split_counts": {
+            split: sum(case.get("split") == split for case in cases)
+            for split in {case.get("split") for case in cases}
+        },
         "limitations": "One development document is currently available locally. It was inspected during a generalized extractor fix and is not held out. Public source availability and redistribution rights vary; candidate sources are documented separately and unclear documents are not copied into the repository.",
         "cases": cases,
     }
@@ -92,13 +115,31 @@ def evaluate(documents_dir: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--documents-dir", type=Path, required=True)
-    parser.add_argument("--output", type=Path, default=ROOT / "benchmarks" / "results" / "real-development.json")
+    parser.add_argument(
+        "--output", type=Path, default=ROOT / "benchmarks" / "results" / "real-development.json"
+    )
     args = parser.parse_args()
     report = evaluate(args.documents_dir)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2, default=str) + "\n", encoding="utf-8")
-    print(json.dumps({"documents": report["documents"], "metrics": report["metrics"], "cases": report["cases"]}, indent=2))
-    return 0 if all(case.get("status") != "not_run" and not case.get("mismatches") for case in report["cases"]) else 1
+    print(
+        json.dumps(
+            {
+                "documents": report["documents"],
+                "metrics": report["metrics"],
+                "cases": report["cases"],
+            },
+            indent=2,
+        )
+    )
+    return (
+        0
+        if all(
+            case.get("status") != "not_run" and not case.get("mismatches")
+            for case in report["cases"]
+        )
+        else 1
+    )
 
 
 if __name__ == "__main__":

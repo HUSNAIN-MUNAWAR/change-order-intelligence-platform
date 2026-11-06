@@ -74,7 +74,10 @@ def match_label(text: str):
     special_patterns = (
         (
             "change_order_number",
-            re.compile(r"^(?:contract\s+)?change\s+order\s+(?:no\.?|number|#)\s+([A-Za-z0-9][\w./#-]*)$", re.I),
+            re.compile(
+                r"^(?:contract\s+)?change\s+order\s+(?:no\.?|number|#)\s+([A-Za-z0-9][\w./#-]*)$",
+                re.I,
+            ),
         ),
         (
             "project_number",

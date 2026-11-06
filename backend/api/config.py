@@ -29,7 +29,9 @@ class Settings:
     processing_timeout_seconds: int = _positive_int("CHANGEORDER_PROCESSING_TIMEOUT", 120)
     cors_origins: tuple[str, ...] = tuple(
         origin.strip()
-        for origin in os.environ.get("CHANGEORDER_CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
+        for origin in os.environ.get(
+            "CHANGEORDER_CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
+        ).split(",")
         if origin.strip()
     )
 

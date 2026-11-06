@@ -12,7 +12,9 @@ from .models import CapabilitiesResponse, LLMCability, OCRCapability
 def capabilities() -> CapabilitiesResponse:
     ocr = ocr_status()
     llm_sdk = importlib.util.find_spec("openai") is not None
-    llm_configured = bool(os.environ.get("OPENAI_API_KEY") and os.environ.get("CHANGEORDER_LLM_MODEL"))
+    llm_configured = bool(
+        os.environ.get("OPENAI_API_KEY") and os.environ.get("CHANGEORDER_LLM_MODEL")
+    )
     return CapabilitiesResponse(
         service="sledge-change-order-intelligence",
         supported_formats=[".pdf", ".txt", ".png", ".jpg", ".jpeg"],
@@ -36,5 +38,12 @@ def capabilities() -> CapabilitiesResponse:
                 else "Optional AI assistance is unavailable; local deterministic extraction remains available."
             ),
         ),
-        extraction_options=["ocr:off", "ocr:auto", "ocr:force", "date_order:reject", "date_order:mdy", "date_order:dmy"],
+        extraction_options=[
+            "ocr:off",
+            "ocr:auto",
+            "ocr:force",
+            "date_order:reject",
+            "date_order:mdy",
+            "date_order:dmy",
+        ],
     )

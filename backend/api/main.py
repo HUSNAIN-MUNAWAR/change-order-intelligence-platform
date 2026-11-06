@@ -65,7 +65,11 @@ async def request_context(request: Request, call_next):
     try:
         response = await call_next(request)
     except Exception:
-        LOGGER.exception(json.dumps({"event": "request_error", "request_id": request_id, "path": request.url.path}))
+        LOGGER.exception(
+            json.dumps(
+                {"event": "request_error", "request_id": request_id, "path": request.url.path}
+            )
+        )
         raise
     response.headers["X-Request-ID"] = request_id
     LOGGER.info(
@@ -84,7 +88,11 @@ async def request_context(request: Request, call_next):
 
 
 def error_response(request: Request, error: ApiInputError) -> JSONResponse:
-    request_id = getattr(request.state, "request_id", None) or request.headers.get("X-Request-ID") or "generated-in-response"
+    request_id = (
+        getattr(request.state, "request_id", None)
+        or request.headers.get("X-Request-ID")
+        or "generated-in-response"
+    )
     payload = ErrorResponse(code=error.code, message=str(error), request_id=request_id).model_dump()
     return JSONResponse(status_code=error.status_code, content=payload)
 
@@ -99,7 +107,9 @@ def option_model(ocr: str, llm: bool, date_order: str) -> ExtractionOptions:
 async def read_upload(upload: UploadFile) -> bytes:
     payload = await upload.read(settings.max_file_bytes + 1)
     if len(payload) > settings.max_file_bytes:
-        raise ApiInputError("INPUT_LIMIT", "The uploaded file exceeds the configured byte limit", 413)
+        raise ApiInputError(
+            "INPUT_LIMIT", "The uploaded file exceeds the configured byte limit", 413
+        )
     return payload
 
 
@@ -110,12 +120,16 @@ async def process_with_timeout(document, options: ExtractionOptions) -> Extracti
             timeout=settings.processing_timeout_seconds,
         )
     except TimeoutError as exc:
-        raise ApiInputError("PROCESSING_TIMEOUT", "Document processing exceeded the configured time limit", 408) from exc
+        raise ApiInputError(
+            "PROCESSING_TIMEOUT", "Document processing exceeded the configured time limit", 408
+        ) from exc
 
 
 @app.get("/api/v1/health", response_model=HealthResponse, tags=["system"])
 async def health() -> HealthResponse:
-    return HealthResponse(status="ok", service="sledge-change-order-intelligence", pipeline_version="0.1.0")
+    return HealthResponse(
+        status="ok", service="sledge-change-order-intelligence", pipeline_version="0.1.0"
+    )
 
 
 @app.get("/api/v1/capabilities", response_model=CapabilitiesResponse, tags=["system"])
@@ -126,7 +140,13 @@ async def get_capabilities() -> CapabilitiesResponse:
 @app.post(
     "/api/v1/extract",
     response_model=ExtractionResult,
-    responses={400: {"model": ErrorResponse}, 413: {"model": ErrorResponse}, 415: {"model": ErrorResponse}, 422: {"model": ErrorResponse}, 408: {"model": ErrorResponse}},
+    responses={
+        400: {"model": ErrorResponse},
+        413: {"model": ErrorResponse},
+        415: {"model": ErrorResponse},
+        422: {"model": ErrorResponse},
+        408: {"model": ErrorResponse},
+    },
     tags=["extraction"],
     summary="Extract a validated change-order result from one document",
 )
@@ -141,7 +161,18 @@ async def extract_document(
         options = option_model(ocr, llm, date_order)
         document = validate_upload(file.filename, file.content_type, await read_upload(file))
         result = await process_with_timeout(document, options)
-        LOGGER.info(json.dumps({"event": "document_processed", "request_id": getattr(request.state, "request_id", None), "filename": document.filename, "pages": len(result.source.pages), "status": result.status, "llm_used": result.llm_used}))
+        LOGGER.info(
+            json.dumps(
+                {
+                    "event": "document_processed",
+                    "request_id": getattr(request.state, "request_id", None),
+                    "filename": document.filename,
+                    "pages": len(result.source.pages),
+                    "status": result.status,
+                    "llm_used": result.llm_used,
+                }
+            )
+        )
         return Response(content=dumps(result), media_type="application/json")
     except ApiInputError as exc:
         return error_response(request, exc)
@@ -150,7 +181,13 @@ async def extract_document(
 @app.post(
     "/api/v1/batch",
     response_model=BatchResponse,
-    responses={400: {"model": ErrorResponse}, 413: {"model": ErrorResponse}, 415: {"model": ErrorResponse}, 422: {"model": ErrorResponse}, 408: {"model": ErrorResponse}},
+    responses={
+        400: {"model": ErrorResponse},
+        413: {"model": ErrorResponse},
+        415: {"model": ErrorResponse},
+        422: {"model": ErrorResponse},
+        408: {"model": ErrorResponse},
+    },
     tags=["extraction"],
     summary="Process multiple documents independently",
 )
@@ -164,17 +201,25 @@ async def extract_batch(
     try:
         options = option_model(ocr, llm, date_order)
         if not files or len(files) > settings.max_batch_files:
-            raise ApiInputError("INPUT_LIMIT", f"Upload between 1 and {settings.max_batch_files} files", 413)
+            raise ApiInputError(
+                "INPUT_LIMIT", f"Upload between 1 and {settings.max_batch_files} files", 413
+            )
         documents = []
         total = 0
         for upload in files:
             payload = await read_upload(upload)
             total += len(payload)
             if total > settings.max_batch_bytes:
-                raise ApiInputError("INPUT_LIMIT", "The batch exceeds the configured total byte limit", 413)
+                raise ApiInputError(
+                    "INPUT_LIMIT", "The batch exceeds the configured total byte limit", 413
+                )
             documents.append(validate_upload(upload.filename, upload.content_type, payload))
         results = [await process_with_timeout(document, options) for document in documents]
-        response = BatchResponse(results=results, processed=len(results), failed=sum(item.status == "failed" for item in results))
+        response = BatchResponse(
+            results=results,
+            processed=len(results),
+            failed=sum(item.status == "failed" for item in results),
+        )
         return Response(content=dumps(response), media_type="application/json")
     except ApiInputError as exc:
         return error_response(request, exc)
@@ -185,5 +230,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
     request_id = request.headers.get("X-Request-ID") or "generated-in-response"
     return JSONResponse(
         status_code=exc.status_code,
-        content=ErrorResponse(code="HTTP_ERROR", message=str(exc.detail), request_id=request_id).model_dump(),
+        content=ErrorResponse(
+            code="HTTP_ERROR", message=str(exc.detail), request_id=request_id
+        ).model_dump(),
     )
