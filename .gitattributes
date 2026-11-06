@@ -1,0 +1,15 @@
+# Preserve generated fixtures byte-for-byte on every runner.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+
+# Keep source and documentation line endings consistent across Windows/Linux.
+*.py text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
