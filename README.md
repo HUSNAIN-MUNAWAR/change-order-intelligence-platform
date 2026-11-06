@@ -4,6 +4,7 @@ Evidence-grounded construction document extraction for messy change-order PDFs, 
 
 ## Table of contents
 
+- [Visual overview](#visual-overview)
 - [1. Overview](#1-overview)
 - [2. Original problem statement](#2-original-problem-statement)
 - [3. Solution summary](#3-solution-summary)
@@ -31,6 +32,18 @@ Evidence-grounded construction document extraction for messy change-order PDFs, 
 - [25. Reproducibility](#25-reproducibility)
 - [26. License and data attribution](#26-license-and-data-attribution)
 - [27. Assessment deliverables](#27-assessment-deliverables)
+
+## Visual overview
+
+These screenshots are captured from the working application using the included synthetic fixtures. They are placed near the top so reviewers can see the product before reading the implementation details.
+
+### Next.js + FastAPI workspace
+
+![Next.js + FastAPI extraction workspace](docs/images/nextjs-demo.png)
+
+### Streamlit demonstration
+
+![Streamlit change-order extraction demo](docs/images/streamlit-demo.png)
 
 ## 1. Overview
 
@@ -63,45 +76,190 @@ The system reads native text when available and falls back to local Tesseract OC
 
 ## 5. Architecture
 
-The extraction workspace keeps the browser experience, API transport and deterministic extraction engine separate:
+The browser is a presentation layer over a thin FastAPI transport. The Python package remains the single source of truth for document ingestion, OCR, extraction, validation, confidence, provenance and serialization.
+
+### 5.1 High-level system architecture
 
 ```mermaid
 flowchart LR
-    Browser["Next.js workspace"] --> API["FastAPI /api/v1"]
-    API --> Engine["changeorder.pipeline.extract"]
-    Engine --> Reader["Readers + PyMuPDF"]
-    Reader --> OCR["Optional local Tesseract OCR"]
-    Engine --> Candidates["Candidates + normalization"]
-    Candidates --> Reconcile["Reconciliation + validation"]
-    Reconcile --> Result["ExtractionResult JSON"]
-    Result --> Evidence["Evidence + confidence + warnings"]
+    U[User] --> F[Next.js App Router frontend]
+    F --> A[FastAPI /api/v1]
+    A --> P[changeorder.pipeline.extract]
+    P --> R[readers.py]
+    R --> N[PyMuPDF native reader]
+    R --> O[Tesseract OCR when needed]
+    P --> E[extraction.py candidates]
+    P --> V[Pydantic validation and reconciliation]
+    V --> C[confidence.py]
+    V --> Q[provenance.py evidence]
+    P -. opt-in .-> L[Optional LLM adapter]
+    A --> J[Validated ExtractionResult JSON]
+    J --> F
 ```
 
-The request lifecycle is:
+The API does not create a competing field schema. It validates transport options, invokes the existing pipeline and returns the package response.
+
+### 5.2 Component dependencies
+
+```mermaid
+flowchart TD
+    Main[backend.api.main] --> Services[backend.api.services]
+    Main --> Caps[backend.api.capabilities]
+    Services --> Pipeline[changeorder.pipeline]
+    Pipeline --> Readers[changeorder.readers]
+    Pipeline --> Extraction[changeorder.extraction]
+    Pipeline --> LLM[changeorder.llm_extractor]
+    Extraction --> Normalization[changeorder.normalization]
+    Extraction --> Provenance[changeorder.provenance]
+    Pipeline --> Validation[changeorder.validation]
+    Validation --> Confidence[changeorder.confidence]
+    Pipeline --> Schemas[changeorder.schemas]
+    Pipeline --> JSON[changeorder.jsonio]
+    Streamlit[streamlit_app.py] --> Demo[changeorder.demo]
+    Demo --> Pipeline
+```
+
+### 5.3 Extraction request sequence
 
 ```mermaid
 sequenceDiagram
-    participant User
-    participant Next as Next.js
-    participant FastAPI
-    participant Pipeline
-    User->>Next: Upload document and options
-    Next->>FastAPI: POST /api/v1/extract
-    FastAPI->>Pipeline: extract(...)
-    Pipeline-->>FastAPI: Validated ExtractionResult
-    FastAPI-->>Next: JSON with evidence and warnings
-    Next-->>User: Review fields, confidence and source evidence
+    actor User
+    participant UI as Next.js frontend
+    participant API as FastAPI
+    participant Engine as Python pipeline
+    participant Reader as PDF/image/text reader
+    participant OCR as Tesseract
+    User->>UI: Select fixture or upload file
+    UI->>API: POST multipart /api/v1/extract
+    API->>API: Validate size, suffix, MIME and signature
+    API->>Engine: extract(temp_path, PipelineOptions)
+    Engine->>Reader: read_file()
+    alt Native text is sufficient
+        Reader-->>Engine: PageText(native)
+    else Page is sparse/image-only
+        Reader->>OCR: Render page and recognize locally
+        OCR-->>Reader: OCR text and word quality
+        Reader-->>Engine: PageText(ocr)
+    end
+    Engine->>Engine: Generate candidates and reconcile conflicts
+    Engine->>Engine: Validate types, consistency, confidence and evidence
+    Engine-->>API: ExtractionResult
+    API-->>UI: Exact Decimal-safe JSON response
+    UI-->>User: Fields, warnings, evidence, preview and download
 ```
 
-See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full Mermaid diagrams and design notes.
+The LLM branch is opt-in and evidence-gated; a provider failure falls back to deterministic candidates.
 
-```text
-Next.js -> FastAPI -> changeorder.pipeline.extract
-                     -> reader/PyMuPDF/Tesseract
-                     -> candidates -> normalization
-                     -> reconciliation/validation
-                     -> confidence + evidence -> ExtractionResult JSON
+### 5.4 Document data flow
+
+```mermaid
+flowchart LR
+    Bytes[Uploaded bytes] --> Bounds[Byte and content bounds]
+    Bounds --> Pages[PageText raw/cleaned blocks]
+    Pages --> Candidates[Label/title/table candidates]
+    Candidates --> Parsed[Typed values: Decimal/date/identifier]
+    Parsed --> Reconciled[Chosen value + alternatives]
+    Reconciled --> Validated[ExtractedField wrappers]
+    Validated --> Audited[Evidence + confidence + issues]
+    Audited --> Result[ExtractionResult JSON]
 ```
+
+Source spans are created from the actual page-local text; coordinates are not invented.
+
+### 5.5 Processing states
+
+```mermaid
+stateDiagram-v2
+    [*] --> Uploaded
+    Uploaded --> Reading
+    Reading --> OCRFallback: sparse/native text unavailable
+    Reading --> Extracting: usable text
+    OCRFallback --> Extracting: OCR text or recoverable warning
+    Reading --> Failed: unsupported/corrupt/limit error
+    OCRFallback --> Failed: OCR unavailable and no usable text
+    Extracting --> Validating
+    Validating --> Completed: no warnings/fatal issues
+    Validating --> PartialSuccess: warnings/conflicts/missing review fields
+    Validating --> Failed: no actionable change-order facts
+```
+
+The API reports the completed `ExtractionResult` status rather than fabricated percentage progress. The frontend shows upload, processing, complete and failed transport states.
+
+### 5.6 Core models and module relationships
+
+```mermaid
+classDiagram
+    class ExtractionResult {
+      status
+      source
+      data
+      issues
+      missing_fields
+      processing_ms
+    }
+    class Source {
+      identifier
+      sha256
+      pages
+    }
+    class PageText {
+      page
+      raw_text
+      text_origin
+      ocr_quality
+    }
+    class ChangeOrder
+    class ExtractedField {
+      value
+      confidence
+      evidence
+      method
+      validation
+      alternatives
+    }
+    class Evidence {
+      source
+      page
+      line_span
+      char_span
+      text
+    }
+    ExtractionResult *-- Source
+    ExtractionResult *-- ChangeOrder
+    Source *-- PageText
+    ChangeOrder *-- ExtractedField
+    ExtractedField *-- Evidence
+```
+
+The implementation types are Pydantic models in [`src/changeorder/schemas.py`](src/changeorder/schemas.py); the diagram shows the important relationships without duplicating every field.
+
+### 5.7 Failure and fallback flow
+
+```mermaid
+flowchart TD
+    Input[Input] --> Format{Supported and within limits?}
+    Format -- no --> Error[Structured 4xx error or failed result]
+    Format -- yes --> Native{Usable native text?}
+    Native -- yes --> Extract[Deterministic candidate extraction]
+    Native -- no --> OCR{OCR available/enabled?}
+    OCR -- no --> Partial[Recoverable OCR warning or failed result]
+    OCR -- yes --> ExtractOCR[OCR candidates with quality penalty]
+    ExtractOCR --> Extract
+    Extract --> Valid{Typed and evidence-backed?}
+    Valid -- no --> Partial
+    Valid -- yes --> Optional{LLM explicitly enabled?}
+    Optional -- no --> JSON[Validated JSON]
+    Optional -- yes --> Provider{Provider response valid and quoted?}
+    Provider -- no --> JSONFallback[Deterministic JSON + recoverable LLM issue]
+    Provider -- yes --> Merge[Evidence-gated candidate merge]
+    Merge --> JSON
+    JSONFallback --> Frontend[Frontend review]
+    JSON --> Frontend
+```
+
+All failure paths preserve the distinction between unsupported input, recoverable processing warnings and fatal absence of actionable change-order facts.
+
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the standalone architecture reference.
 
 ## 6. Technology stack
 
@@ -198,15 +356,7 @@ Existing interfaces:
 
 ## 11. Application screenshots
 
-These screenshots were captured from the working application using the included synthetic fixtures.
-
-### Next.js + FastAPI workspace
-
-![Next.js + FastAPI extraction workspace](docs/images/nextjs-demo.png)
-
-### Streamlit demonstration
-
-![Streamlit change-order extraction demo](docs/images/streamlit-demo.png)
+The screenshots are shown in the [visual overview](#visual-overview) near the top of this README. The source files are [`docs/images/nextjs-demo.png`](docs/images/nextjs-demo.png) and [`docs/images/streamlit-demo.png`](docs/images/streamlit-demo.png).
 
 ## 12. API reference
 
@@ -238,7 +388,39 @@ curl.exe -X POST http://127.0.0.1:8000/api/v1/extract `
 
 ## 14. OCR
 
-OCR is local, optional and detected at runtime. The reader renders PDF pages at a bounded resolution, honors image EXIF orientation, converts to grayscale, applies conservative autocontrast and reconstructs OCR words into lines with mean word confidence. OCR-derived candidates receive a quality penalty and are visibly marked. Image-only PDFs with unavailable OCR fail explicitly; they do not silently become empty successful documents.
+OCR is local, optional and detected at runtime. Native PDF text is always preferred when it is usable. OCR is used for sparse native pages, image-only PDFs and image inputs.
+
+### 14.1 OCR processing flow
+
+```mermaid
+flowchart TD
+    Input[PDF page or image] --> Native{Usable native text?}
+    Native -- yes --> NativeText[Keep native page text]
+    Native -- no --> Render[Render page at bounded resolution]
+    Render --> Orient[Honor EXIF/page orientation]
+    Orient --> Gray[Convert to grayscale]
+    Gray --> Contrast[Apply conservative autocontrast]
+    Contrast --> Tesseract[Run local Tesseract OCR]
+    Tesseract --> Words[Collect recognized words and confidence]
+    Words --> Lines[Reconstruct page-local text lines]
+    Lines --> PageText[Create PageText with text_origin=ocr]
+    NativeText --> Candidates[Generate extraction candidates]
+    PageText --> Candidates
+    Candidates --> Quality[Apply OCR quality penalty and warnings]
+    Quality --> Evidence[Preserve exact text evidence]
+```
+
+### 14.2 What happens in practice
+
+1. The reader bounds file size, page count, rendered pixels and extracted characters before processing.
+2. Each PDF page first tries PyMuPDF native text extraction. This preserves selectable text and avoids unnecessary OCR noise.
+3. When native text is empty or too sparse, the page is rendered locally and passed to Tesseract; no network OCR service is required.
+4. The image is oriented, converted to grayscale and given conservative contrast enhancement before recognition.
+5. Tesseract words are grouped back into page-local lines, and the mean word confidence is stored on `PageText.ocr_quality`.
+6. OCR text goes through the same candidate extraction, normalization, validation and provenance pipeline as native text.
+7. OCR-derived values are marked with their origin and receive a quality penalty. Low-quality or unavailable OCR produces an explicit warning or failure rather than an empty success.
+
+This design lets reviewers see whether a field came from native text or OCR and inspect the exact supporting snippet returned by the pipeline.
 
 ## 15. Confidence scores
 
