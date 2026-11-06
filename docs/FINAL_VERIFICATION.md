@@ -2,6 +2,8 @@
 
 Verification date: 2026-11-06 (Asia/Karachi)
 
+The original table below is retained as the prior full-stack verification record. The 2026-11-07 extraction-core upgrade is separately verified in [`EXTRACTION_UPGRADE_REPORT.md`](EXTRACTION_UPGRADE_REPORT.md): 163 tests pass, including nine new failing-first regressions, synthetic evaluation remains 372/372, local OCR remains 124/124 with 2/2 negative cases, and the one Fresno development document remains 9/9 annotated fields. No UI files were changed.
+
 ## Verification table
 
 | Check | Command | Result | Evidence |

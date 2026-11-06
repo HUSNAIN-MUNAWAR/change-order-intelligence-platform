@@ -1,5 +1,7 @@
 # Baseline Audit
 
+> Historical snapshot from the earlier full-stack assessment work. It predates the current Git checkout and the core extraction upgrade. For the current extraction baseline, confirmed defects, fixes, and verification, see [`EXTRACTION_UPGRADE_REPORT.md`](EXTRACTION_UPGRADE_REPORT.md).
+
 Audit date: 2026-11-06 (Asia/Karachi)
 
 ## Repository and working-tree state

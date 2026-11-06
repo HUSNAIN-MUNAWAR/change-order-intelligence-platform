@@ -10,6 +10,10 @@ from .extraction import Candidate
 from .schemas import ChangeOrder, Issue
 
 
+def _candidate_evidence(candidate: Candidate):
+    return candidate.evidence_spans or [candidate.evidence]
+
+
 def reconcile(candidates: list[Candidate], issues: list[Issue]) -> ChangeOrder:
     grouped = defaultdict(list)
     for candidate in candidates:
@@ -32,7 +36,7 @@ def reconcile(candidates: list[Candidate], issues: list[Issue]) -> ChangeOrder:
                     dict(
                         value=candidate.value,
                         confidence=0.5,
-                        evidence=[candidate.evidence],
+                        evidence=_candidate_evidence(candidate),
                         method=candidate.method,
                         validation="valid",
                     )
@@ -59,17 +63,36 @@ def reconcile(candidates: list[Candidate], issues: list[Issue]) -> ChangeOrder:
                 other.value == alt["value"] for alt in alternatives
             ):
                 alternatives.append(
-                    dict(value=other.value, evidence=[other.evidence], method=other.method)
+                    dict(
+                        value=other.value,
+                        evidence=_candidate_evidence(other),
+                        method=other.method,
+                    )
                 )
+        non_llm_evidence = {
+            (ev.page, ev.char_start, ev.char_end, ev.text)
+            for candidate in agreeing
+            if candidate.method != "llm"
+            for ev in _candidate_evidence(candidate)
+        }
+        independent_methods = set()
+        for candidate in agreeing:
+            if candidate.method == "llm" and any(
+                (ev.page, ev.char_start, ev.char_end, ev.text) in non_llm_evidence
+                for ev in _candidate_evidence(candidate)
+            ):
+                continue
+            independent_methods.add(candidate.method)
         confidence, signals = score(
             chosen,
             conflict=bool(alternatives),
-            independent_methods=len({candidate.method for candidate in agreeing}),
+            independent_methods=len(independent_methods),
         )
         evs = []
         for candidate in agreeing:
-            if candidate.evidence not in evs:
-                evs.append(candidate.evidence)
+            for candidate_evidence in _candidate_evidence(candidate):
+                if candidate_evidence not in evs:
+                    evs.append(candidate_evidence)
         validation = "conflict" if alternatives else ("warning" if chosen.notes else "valid")
         field = adapter.validate_python(
             dict(
@@ -174,7 +197,6 @@ def check_consistency(data: ChangeOrder) -> tuple[list[Issue], str]:
                         "Stated total differs from the final/approved amount; both source values retained",
                         ["total_change_amount", name],
                     )
-                break
     if data.currency.validation == "conflict":
         issues.append(
             Issue(

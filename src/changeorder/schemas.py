@@ -4,7 +4,7 @@ from datetime import date
 from decimal import Decimal
 from typing import Annotated, Generic, Literal, TypeVar
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, model_validator
+from pydantic import BaseModel, ConfigDict, Field, PrivateAttr, StrictStr, model_validator
 
 Money = Annotated[Decimal, Field(allow_inf_nan=False, max_digits=18, decimal_places=2)]
 Number = Annotated[Decimal, Field(allow_inf_nan=False, max_digits=18, decimal_places=4)]
@@ -133,6 +133,11 @@ class PageText(Model):
     native_text: str | None = None
     text_origin: Literal["native", "ocr", "text"]
     ocr_quality: float | None = Field(default=None, ge=0, le=1)
+    # Internal-only ranges let evidence identify mixed native/OCR spans without
+    # changing the serialized/public PageText contract.
+    _origin_ranges: list[tuple[int, int, Literal["native", "ocr", "text"]]] = PrivateAttr(
+        default_factory=list
+    )
 
 
 class Source(Model):

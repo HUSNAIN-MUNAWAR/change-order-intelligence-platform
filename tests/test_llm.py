@@ -44,6 +44,20 @@ def test_llm_supported_verbatim_description_and_confidence(offline):
     assert result.llm_used
 
 
+def test_llm_can_verify_semantic_amount_label_outside_deterministic_pattern():
+    source = read_text(
+        "CHANGE ORDER\nCO Number: 1\nProject: A\nPROPOSED CHANGE VALUE ........ USD 500"
+    )
+    llm = StructuredLLMExtractor(
+        lambda payload: response(
+            "proposed_amount", "USD 500", "PROPOSED CHANGE VALUE ........ USD 500"
+        )
+    )
+    candidates, issues = llm.extract(source)
+    assert not issues
+    assert candidates[0].field == "proposed_amount" and candidates[0].value == 500
+
+
 @pytest.mark.parametrize(
     ("field", "raw", "quote", "page"),
     [

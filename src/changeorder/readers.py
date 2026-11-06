@@ -2,7 +2,9 @@
 
 import hashlib
 import math
+import re
 from dataclasses import dataclass
+from difflib import SequenceMatcher
 from io import BytesIO
 from pathlib import Path
 
@@ -68,23 +70,75 @@ def _ocr_page(page, options: ReaderOptions) -> tuple[str, float | None]:
 
 
 def _needs_ocr(page, native: str) -> bool:
-    """Detect empty pages and large scanned images with only a sparse native header."""
+    """Detect empty pages and meaningful embedded scans, including mixed pages."""
     characters = sum(character.isalnum() for character in native)
     if characters < 30:
         return True
+    coverage = _image_coverage(page)
+    if coverage >= 0.65:
+        return True
+    # A page can have a substantial digital header and still contain a scanned
+    # table/signature block. Avoid OCR for tiny logos, but inspect meaningful
+    # image regions unless the native layer is already very dense.
+    if coverage >= 0.25 and characters < 2000:
+        return True
     if characters >= 150:
         return False
-    try:
-        import pymupdf
+    return coverage >= 0.25
 
-        area = page.rect.width * page.rect.height
+
+def _image_coverage(page) -> float:
+    try:
+        page_width = float(page.rect.width)
+        page_height = float(page.rect.height)
+        page_area = page_width * page_height
+        if page_area <= 0:
+            return 0.0
+        largest = 0.0
         for item in page.get_image_info():
-            intersection = pymupdf.Rect(item["bbox"]) & page.rect
-            if area > 0 and intersection.width * intersection.height / area >= 0.65:
-                return True
-    except (RuntimeError, ValueError):
-        pass  # Retain usable native text if image inspection is unavailable.
-    return False
+            x0, y0, x1, y1 = item["bbox"]
+            width = max(0.0, min(page_width, float(x1)) - max(0.0, float(x0)))
+            height = max(0.0, min(page_height, float(y1)) - max(0.0, float(y0)))
+            largest = max(largest, width * height / page_area)
+        return largest
+    except (KeyError, RuntimeError, TypeError, ValueError):
+        return 0.0
+
+
+def _canonical_line(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", value.casefold())
+
+
+def _merge_native_ocr(native: str, ocr_text: str):
+    """Append OCR-only lines while retaining native text and exact span origins."""
+    if not native.strip():
+        return ocr_text, [(0, len(ocr_text), "ocr")], "ocr"
+    native_lines = [_canonical_line(line) for line in native.splitlines() if line.strip()]
+    extra_lines = []
+    for line in ocr_text.splitlines():
+        if not line.strip():
+            continue
+        canonical = _canonical_line(line)
+        if not canonical:
+            continue
+        if any(
+            canonical == existing or SequenceMatcher(None, canonical, existing).ratio() >= 0.94
+            for existing in native_lines + [_canonical_line(item) for item in extra_lines]
+        ):
+            continue
+        extra_lines.append(line.rstrip())
+    if not extra_lines:
+        return (
+            native,
+            [(0, len(native), "native")],
+            "ocr" if sum(c.isalnum() for c in native) < 150 else "native",
+        )
+    separator = "" if not native or native.endswith(("\n", "\r")) else "\n"
+    prefix = native + separator
+    extra = "\n".join(extra_lines)
+    merged = prefix + extra
+    page_origin = "ocr" if sum(c.isalnum() for c in native) < 150 else "native"
+    return merged, [(0, len(native), "native"), (len(prefix), len(merged), "ocr")], page_origin
 
 
 def _read_image(path: Path, payload: bytes, options: ReaderOptions) -> tuple[Source, list[Issue]]:
@@ -250,6 +304,7 @@ def read_file(path: Path, options: ReaderOptions | None = None) -> tuple[Source,
                     )
                 )
             raw, origin, quality = native, "native", None
+            origin_ranges = [(0, len(native), "native")] if native else []
             sparse = _needs_ocr(page, native)
             if sparse or options.ocr == "force":
                 if options.ocr == "off":
@@ -262,15 +317,13 @@ def read_file(path: Path, options: ReaderOptions | None = None) -> tuple[Source,
                 else:
                     try:
                         ocr_text, quality = _ocr_page(page, options)
-                        if ocr_text.strip() and (
-                            options.ocr == "force" or len(ocr_text.strip()) > len(native.strip())
-                        ):
-                            raw, origin = ocr_text, "ocr"
+                        if ocr_text.strip():
+                            raw, origin_ranges, origin = _merge_native_ocr(native, ocr_text)
                             issues.append(
                                 Issue(
                                     code="OCR_USED",
                                     severity="info",
-                                    message=f"Local OCR used on page {number}; review recognition errors",
+                                    message=f"Local OCR used on page {number}; native and OCR text were merged",
                                 )
                             )
                         else:
@@ -288,7 +341,7 @@ def read_file(path: Path, options: ReaderOptions | None = None) -> tuple[Source,
                                 message=f"Page {number}: {exc}",
                             )
                         )
-            char_count += len(raw) + (len(native) if origin == "ocr" else 0)
+            char_count += len(raw)
             if char_count > options.max_chars:
                 raise InputError(
                     "INPUT_LIMIT", "Extracted PDF text exceeds configured character limit"
@@ -298,11 +351,12 @@ def read_file(path: Path, options: ReaderOptions | None = None) -> tuple[Source,
                     page=number,
                     raw_text=raw,
                     cleaned_text=clean_text(raw),
-                    native_text=native if origin == "ocr" else None,
+                    native_text=native if quality is not None else None,
                     text_origin=origin,
-                    ocr_quality=quality if origin == "ocr" else None,
+                    ocr_quality=quality if quality is not None else None,
                 )
             )
+            source.pages[-1]._origin_ranges = origin_ranges
     if not any(page.raw_text.strip() for page in source.pages):
         issues.append(
             Issue(

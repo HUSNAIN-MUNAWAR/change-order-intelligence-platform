@@ -1,11 +1,10 @@
 """Orchestrate ingestion, candidate extraction, reconciliation and validated output."""
 
-import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from time import perf_counter
 
-from .extraction import extract_candidates
+from .extraction import classify_document, extract_candidates
 from .llm_extractor import Extractor, LLMError, OpenAITransport, StructuredLLMExtractor
 from .normalization import DateOrder
 from .readers import InputError, ReaderOptions, read_file, read_text
@@ -55,14 +54,7 @@ def extract(
         if not any(issue.severity == "fatal_error" for issue in issues):
             candidates, extraction_issues = extract_candidates(source, options.date_order)
             issues.extend(extraction_issues)
-            recognizable = any(
-                re.search(
-                    r"\bchange[ -]*[o0]rder\b|\bc\.?o\.?\s*(?:#|no\b|number\b|:)",
-                    page.cleaned_text,
-                    re.I,
-                )
-                for page in source.pages
-            )
+            recognizable = classify_document(source)
             if not recognizable:
                 issues.append(
                     Issue(

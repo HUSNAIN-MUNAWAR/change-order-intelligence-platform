@@ -108,3 +108,43 @@ def test_generic_total_and_final_disagreement_requires_review(offline):
     assert result.data.total_change_amount.value == 100
     assert result.data.final_amount.value == 120
     assert any(issue.code == "TOTAL_ROLE_MISMATCH" for issue in result.issues)
+
+
+def test_generic_total_checks_both_approved_and_final_roles(offline):
+    result = extract(
+        text=(
+            "CHANGE ORDER\nCO Number: 1\nProject: A\n"
+            "Total: USD 100\nFinal Amount: USD 100\nApproved Amount: USD 120"
+        ),
+        options=offline,
+    )
+    assert result.data.approved_amount.value == 120
+    assert any(issue.code == "TOTAL_ROLE_MISMATCH" for issue in result.issues)
+
+
+def test_contract_total_context_is_not_treated_as_change_amount(offline):
+    result = extract(
+        text=(
+            "CHANGE ORDER\nCO Number: 1\nProject: A\nFINANCIAL SUMMARY\n"
+            "Subtotal: USD 90\nTax Total: USD 10\n"
+            "Current Contract Total: USD 110\nProposed Change Amount: USD 20"
+        ),
+        options=offline,
+    )
+    assert result.data.revised_contract_amount.value == 110
+    assert result.data.total_change_amount.value == 20
+    assert result.data.amount_basis.value == "proposed"
+
+
+def test_credits_and_line_subtotal_are_validated(offline):
+    result = extract(
+        text=(
+            "CHANGE ORDER\nCO Number: 1\nProject: A\nCredits/Deductions: (USD 20)\n"
+            "Description | Qty | Unit Price | Amount\n"
+            "Labor | 2 | USD 10 | USD 20\nSubtotal: USD 19\n"
+            "Total Change Amount: USD 20"
+        ),
+        options=offline,
+    )
+    assert result.data.credits_deductions.value == Decimal("-20.00")
+    assert any(issue.code == "LINE_SUBTOTAL_MISMATCH" for issue in result.issues)

@@ -24,6 +24,16 @@ def lines(page: PageText) -> list[Line]:
     return result
 
 
+def text_origin_for_span(page: PageText, start: int, end: int) -> str:
+    """Return the origin for an evidence span, including mixed pages."""
+    origins = {
+        origin for left, right, origin in page._origin_ranges if start < right and end > left
+    }
+    if len(origins) == 1:
+        return next(iter(origins))
+    return page.text_origin
+
+
 def evidence(source: Source, page: PageText, first: Line, last: Line | None = None) -> Evidence:
     last = last or first
     return Evidence(
@@ -34,7 +44,7 @@ def evidence(source: Source, page: PageText, first: Line, last: Line | None = No
         char_start=first.start,
         char_end=last.end,
         text=page.raw_text[first.start : last.end],
-        text_origin=page.text_origin,
+        text_origin=text_origin_for_span(page, first.start, last.end),
     )
 
 
@@ -58,7 +68,7 @@ def locate_quote(source: Source, page_number: int | None, quote: str) -> Evidenc
                 char_start=start,
                 char_end=start + len(quote),
                 text=quote,
-                text_origin=page.text_origin,
+                text_origin=text_origin_for_span(page, start, start + len(quote)),
             )
         )
     return found[0] if len(found) == 1 else None

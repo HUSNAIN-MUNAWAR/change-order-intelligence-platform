@@ -33,15 +33,15 @@ LABELS = {
     "reason": r"reason(?: for change)?|justification",
     "discipline": r"affected (?:work|discipline)|discipline|trade",
     "referenced_documents": r"referenced (?:drawings|documents)|references|drawings",
-    "total_change_amount": r"total change(?: order)? amount|change order total|total change|net change(?: amount)?|amount of (?:this )?change|change amount|total amount|grand total|total",
-    "requested_amount": r"requested(?: change)? amount|amount requested",
-    "proposed_amount": r"proposed(?: change)? amount|amount proposed",
-    "approved_amount": r"approved(?: change)? amount|amount approved",
+    "total_change_amount": r"current change(?: order)? total|current change(?: order)? amount|total change(?: order)? amount|change order total|total change|net change(?: amount)?|amount of (?:this )?change|change amount|total amount|grand total|total",
+    "requested_amount": r"requested(?: change)? (?:amount|value|sum)|amount requested|requested change",
+    "proposed_amount": r"proposed(?: change)? (?:amount|value|sum)|amount proposed|proposed change",
+    "approved_amount": r"approved(?: change)? (?:amount|value|sum)|amount approved|approved change",
     "final_amount": r"final(?: change)? amount|final change order total",
     "currency": r"currency",
-    "previous_contract_amount": r"previous contract (?:amount|sum)|original contract (?:amount|sum)|contract amount before change",
-    "revised_contract_amount": r"revised contract (?:amount|sum)|new contract (?:amount|sum)",
-    "credits_deductions": r"credits?(?: / deductions?)?|deductions?",
+    "previous_contract_amount": r"previous contract (?:amount|sum|total)|original contract (?:amount|sum|total)|contract amount before change",
+    "revised_contract_amount": r"(?:current|revised|new) contract (?:amount|sum|total)|current contract total|revised contract total",
+    "credits_deductions": r"credits?(?:\s*/\s*deductions?)?|deductions?",
     "schedule_impact": r"schedule (?:impact|extension)|time (?:impact|extension)|contract time adjustment",
     "schedule_unit": r"schedule unit|unit of schedule impact",
     "proposed_completion_date": r"proposed completion date|revised completion date",
@@ -65,6 +65,39 @@ class Candidate:
     strength: float = 0.90
     notes: list[str] = dc_field(default_factory=list)
     ocr_quality: float | None = None
+    evidence_spans: list[Evidence] = dc_field(default_factory=list)
+
+
+def classify_document(source: Source) -> bool:
+    """Recognize construction change documents without trusting CO references alone."""
+    text = "\n".join(page.cleaned_text for page in source.pages)
+    header = "\n".join(text.splitlines()[:4])
+    if re.search(
+        r"^\s*(?:invoice|receipt|purchase\s+order|packing\s+slip|expense\s+report)\b",
+        header,
+        re.I | re.M,
+    ) and not re.search(r"\bchange\s*[o0]rder\b", header, re.I):
+        return False
+    if re.search(
+        r"\b(?:invoice|receipt|purchase\s+order|packing\s+slip|expense\s+report)\b", text, re.I
+    ):
+        if not re.search(r"\b(?:change\s+order|change\s+request|change\s+directive)\b", text, re.I):
+            return False
+    if re.search(
+        r"\b(?:change\s*[o0]rder|change\s+request|change\s+directive|field\s+directive|pco|ccd)\b",
+        text,
+        re.I,
+    ):
+        return True
+    construction_context = re.search(
+        r"\b(?:project|contract|contractor|subcontractor|scope|work|construction|schedule|architect|engineer)\b",
+        text,
+        re.I,
+    )
+    return bool(
+        construction_context
+        and re.search(r"\b(?:c\.?\s*o\.?|co)\s*(?:[-#]|no\.?|number|:)\s*\w+", text, re.I)
+    )
 
 
 def match_label(text: str):
@@ -144,7 +177,27 @@ def _label_strength(name: str, text: str) -> float:
             return 0.76
         if "increase in contract price" in lowered:
             return 0.72
+        if re.fullmatch(r"(?:grand )?total(?: amount)?\s*[:=|].*", lowered):
+            return 0.84
     return 0.90
+
+
+def _generic_total_context(page_lines: list[Line], index: int) -> bool:
+    text = " ".join(
+        line.clean for line in page_lines[max(0, index - 2) : min(len(page_lines), index + 2)]
+    )
+    return bool(
+        re.search(
+            r"\b(?:tax|subtotal|sub-total|markup|overhead|retention|"
+            r"(?:original|previous|revised|current)\s+contract)\b",
+            text,
+            re.I,
+        )
+    )
+
+
+def _is_generic_total_line(text: str) -> bool:
+    return bool(re.fullmatch(r"(?:grand )?total(?: amount)?\s*[:=|].*", text, re.I))
 
 
 def _table_field(value, ev):
@@ -190,10 +243,11 @@ def extract_candidates(
     issues: list[Issue] = []
     items: list[CostItem] = []
     item_evidence: list[Evidence] = []
+    table_columns = None
+    table_item_start = 0
     for page in source.pages:
         page_lines = _logical_lines(page)
         consumed: set[int] = set()
-        table_columns = None
         for index, line in enumerate(page_lines):
             if index in consumed or not line.clean:
                 continue
@@ -210,7 +264,37 @@ def extract_candidates(
                 and lower_parts[-1] in {"amount", "total", "cost"}
             ):
                 table_columns = lower_parts
+                table_item_start = len(items)
                 continue
+            if table_columns and len(items) > table_item_start:
+                subtotal = re.fullmatch(r"(?:sub[ -]?total)\s*[:=|]\s*(.+)", text, re.I)
+                if subtotal:
+                    ev = evidence(source, page, line)
+                    try:
+                        stated = parse_money(subtotal[1])
+                        calculated = sum(
+                            (item.amount.value for item in items[table_item_start:]), Decimal(0)
+                        )
+                        if abs(stated - calculated) > Decimal("0.01"):
+                            issues.append(
+                                Issue(
+                                    code="LINE_SUBTOTAL_MISMATCH",
+                                    message="Stated line-item subtotal differs from extracted cost rows",
+                                    field="line_items",
+                                    evidence=ev,
+                                )
+                            )
+                    except (ParseError, ValueError) as exc:
+                        issues.append(
+                            Issue(
+                                code="INVALID_LINE_SUBTOTAL",
+                                message=f"Line-item subtotal could not be parsed: {exc}",
+                                field="line_items",
+                                evidence=ev,
+                            )
+                        )
+                    table_columns = None
+                    continue
             if table_columns and len(parts) == len(table_columns) and not match_label(text):
                 if parts[0].lower() not in {"subtotal", "total", "tax", "markup", "grand total"}:
                     ev = evidence(source, page, line)
@@ -268,6 +352,8 @@ def extract_candidates(
                         )
                 table_columns = None
             elif table_columns:
+                if re.match(r"^(?:page\s+\d|change[ -]*order\b|synthetic\b)", text, re.I):
+                    continue
                 table_columns = None
             match = match_label(text)
             if not match:
@@ -287,7 +373,7 @@ def extract_candidates(
                     )
                     continue
                 heading = re.fullmatch(
-                    r"((?:proposed |requested |draft )?change[ -]*[o0]rder)(?:\s+(?:no\.?\s*|#\s*)?([A-Za-z0-9][\w./#-]*))?",
+                    r"((?:(?:proposed |requested |draft )?change[ -]*(?:[o0]rder|request|directive)))(?:\s+(?:no\.?\s*|#\s*)?([A-Za-z0-9][\w./#-]*))?",
                     text,
                     re.I,
                 )
@@ -316,6 +402,20 @@ def extract_candidates(
                         )
                 continue
             name, raw, repaired = match
+            if (
+                name == "total_change_amount"
+                and _is_generic_total_line(line.clean)
+                and _generic_total_context(page_lines, index)
+            ):
+                issues.append(
+                    Issue(
+                        code="AMBIGUOUS_AMOUNT_ROLE",
+                        message="Generic total appears near tax/subtotal/markup context and was not assigned as the change total",
+                        field=name,
+                        evidence=evidence(source, page, line),
+                    )
+                )
+                continue
             last = line
             fragments = [raw] if raw.strip() else []
             # Single-line values may be wrapped directly below their label.
@@ -414,5 +514,14 @@ def extract_candidates(
                     issues.append(Issue(code=exc.code, message=str(exc), field=name, evidence=ev))
     if items:
         # The collection carries source evidence and each leaf carries its own evidence/score.
-        candidates.append(Candidate("line_items", items, item_evidence[0], "table", 0.78))
+        candidates.append(
+            Candidate(
+                "line_items",
+                items,
+                item_evidence[0],
+                "table",
+                0.78,
+                evidence_spans=item_evidence,
+            )
+        )
     return candidates, issues

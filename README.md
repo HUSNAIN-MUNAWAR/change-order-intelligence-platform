@@ -51,6 +51,8 @@ This repository implements the Sledge change-order extraction assessment. It tur
 
 The stable Python extraction engine is used by the CLI, the legacy Streamlit demonstration, the FastAPI backend and the new Next.js workspace.
 
+The latest core-engineering audit, defect reproductions, native/OCR fusion design, financial-role validation, benchmark comparison and remaining limitations are recorded in [`docs/EXTRACTION_UPGRADE_REPORT.md`](docs/EXTRACTION_UPGRADE_REPORT.md).
+
 ## 2. Original problem statement
 
 > “Build a change-order extraction pipeline that turns messy change-order PDFs or text into validated JSON with per-field confidence scores. Include a short write-up of your approach and its failure modes. Please send a link to your code and write-up.”
@@ -65,8 +67,10 @@ The system reads native text when available and falls back to local Tesseract OC
 
 - PDF, UTF-8 TXT, PNG and JPEG ingestion.
 - Page-aware native PDF reading and genuine local Tesseract OCR.
+- Conservative native/OCR fusion for mixed pages with exact span-level provenance.
 - Decimal-safe financial values and conservative date handling.
 - Separate requested, proposed, approved, final, previous and revised contract roles.
+- Context-aware generic-total abstention and explicit line-item subtotal checks.
 - Per-field confidence, method, validation status, signals and alternatives.
 - Exact line and character evidence spans with page references.
 - FastAPI health, capabilities, single-document and batch endpoints.

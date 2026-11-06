@@ -197,9 +197,12 @@ class StructuredLLMExtractor:
                     ],
                 )
                 local, _ = extract_candidates(quote_source, date_order)
-                supported = any(
+                matching_local = [
                     candidate.field == name and candidate.value == value for candidate in local
-                )
+                ]
+                supported = any(matching_local)
+                if not supported and not any(candidate.field == name for candidate in local):
+                    supported = self._nearby_label_supports_field(source, ev, name)
             if not supported:
                 issues.append(
                     Issue(
@@ -213,3 +216,21 @@ class StructuredLLMExtractor:
             page = next(page for page in source.pages if page.page == item.page)
             candidates.append(Candidate(name, value, ev, "llm", 0.65, notes, page.ocr_quality))
         return candidates, issues
+
+    @staticmethod
+    def _nearby_label_supports_field(source: Source, ev, name: str) -> bool:
+        """Allow unusual layouts while keeping an explicit semantic label gate."""
+        page = next((page for page in source.pages if page.page == ev.page), None)
+        if page is None:
+            return False
+        left = max(0, ev.char_start - 300)
+        right = min(len(page.raw_text), ev.char_end + 300)
+        context = page.raw_text[left:right]
+        label = LABELS[name]
+        return bool(
+            re.search(
+                r"(?:^|[^\w])(?:" + label + r")(?:\s*(?::|=|\||\b))",
+                context,
+                re.I,
+            )
+        )

@@ -2,6 +2,15 @@
 
 Status key: `[ ]` not started, `[x]` completed only after its acceptance criteria pass, `[~]` in progress or blocked by the environment.
 
+## Current core extraction upgrade (2026-11-07)
+
+- [x] Reproduce financial-role, OCR merge, and document-classification defects before fixes. Verify: new failing-first tests in `tests/test_validation.py`, `tests/test_readers.py`, and `tests/test_failures.py`.
+- [x] Add context-aware financial aliases and generic-total abstention. Verify: `test_contract_total_context_is_not_treated_as_change_amount`, `test_credits_and_line_subtotal_are_validated`.
+- [x] Compare every applicable total role and preserve mixed native/OCR evidence spans. Verify: `test_generic_total_checks_both_approved_and_final_roles`, `test_ocr_merge_preserves_native_text`.
+- [x] Improve construction-document recognition and bounded LLM semantic verification. Verify: `tests/test_failures.py`, `tests/test_llm.py`.
+- [x] Rerun full tests, Ruff, synthetic, local OCR, and external-development evaluation. Verify: `docs/EXTRACTION_UPGRADE_REPORT.md`.
+- [ ] Build a larger independently annotated, held-out external corpus. Current limitation: only one Fresno development document is available locally.
+
 ## P0 — Repository audit and baseline verification
 
 - [x] Audit repository, manifests, schema, engine, UI, tests, scripts and CI. Files: `src/changeorder/*`, `tests/*`, `streamlit_app.py`, `scripts/*`, `pyproject.toml`, `README.md`. Outcome: actual architecture and risks recorded. Acceptance: audit is source-backed and names missing layers. Verify: `docs/BASELINE_AUDIT.md`.

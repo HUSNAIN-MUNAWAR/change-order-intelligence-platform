@@ -21,7 +21,11 @@ def score(
         value -= penalty
         signals.append(f"ocr_penalty=-{penalty:.2f}")
     for note in candidate.notes:
-        penalty = 0.15 if note == "ocr_label_repair" else 0.08
+        penalty = {
+            "ocr_label_repair": 0.15,
+            "generic_total_label": 0.08,
+            "ambiguous_amount_role": 0.12,
+        }.get(note, 0.08)
         value -= penalty
         signals.append(f"{note}=-{penalty:.2f}")
     if conflict:

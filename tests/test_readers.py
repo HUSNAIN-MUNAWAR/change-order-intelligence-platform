@@ -5,6 +5,7 @@ import pymupdf
 import pytest
 
 from changeorder import readers
+from changeorder.provenance import evidence, lines
 from changeorder.readers import InputError, ReaderOptions, read_file, read_text
 
 
@@ -56,6 +57,39 @@ def test_ocr_unavailable_does_not_disappear(monkeypatch, documents):
     monkeypatch.setattr(readers, "_ocr_page", unavailable)
     _, issues = read_file(documents.parent / "ocr" / "13_scanned.pdf")
     assert any(issue.code == "OCR_UNAVAILABLE" for issue in issues)
+
+
+def test_ocr_merge_preserves_native_text(monkeypatch, documents):
+    native_source, _ = read_file(documents / "03_digital.pdf", ReaderOptions(ocr="off"))
+    native_text = native_source.pages[0].raw_text
+    monkeypatch.setattr(readers, "_needs_ocr", lambda page, native: True)
+    monkeypatch.setattr(
+        readers,
+        "_ocr_page",
+        lambda page, options: ("CHANGE ORDER\nAdditional scanned financial table\n", 0.81),
+    )
+    source, issues = read_file(documents / "03_digital.pdf")
+    page = source.pages[0]
+    assert native_text.strip() in page.raw_text
+    assert "Additional scanned financial table" in page.raw_text
+    assert page.native_text == native_text
+    assert page.text_origin == "native"
+    assert any(issue.code == "OCR_USED" for issue in issues)
+    page_lines = lines(page)
+    native_line = next(line for line in page_lines if "CHANGE ORDER" in line.raw)
+    ocr_line = next(line for line in page_lines if "Additional scanned" in line.raw)
+    assert evidence(source, page, native_line).text_origin == "native"
+    assert evidence(source, page, ocr_line).text_origin == "ocr"
+
+
+def test_large_embedded_image_can_trigger_ocr(monkeypatch):
+    class MixedPage:
+        rect = type("Rect", (), {"width": 100, "height": 100})()
+
+        def get_image_info(self, hashes=False):
+            return [{"bbox": (0, 0, 80, 80)}]
+
+    assert readers._needs_ocr(MixedPage(), "native text " * 30)
 
 
 @pytest.mark.parametrize(

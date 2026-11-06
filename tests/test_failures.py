@@ -19,6 +19,37 @@ def test_non_change_order_does_not_leak_generic_fields(documents, offline):
     assert result.data.total_change_amount.value is None
 
 
+def test_change_request_with_construction_facts_is_recognized(offline):
+    result = extract(
+        text=(
+            "CHANGE REQUEST\nProject: Riverside Pump Station\n"
+            "Contractor: Northstar Builders\nDescription: Replace the valve\n"
+            "Requested Amount: USD 2400"
+        ),
+        options=offline,
+    )
+    assert result.status in {"partial", "success"}
+    assert result.data.requested_amount.value == 2400
+
+
+def test_co_number_variant_needs_construction_context(offline):
+    result = extract(
+        text="CO-001\nProject: Water Treatment Plant\nContractor: Apex Build\nTotal: USD 750",
+        options=offline,
+    )
+    assert result.status in {"partial", "success"}
+    assert result.data.total_change_amount.value == 750
+
+
+def test_invoice_with_co_reference_is_not_change_order(offline):
+    result = extract(
+        text="INVOICE\nInvoice Number: CO-12\nVendor: Office Catering\nTotal: USD 450",
+        options=offline,
+    )
+    assert result.status == "failed"
+    assert any(issue.code == "NOT_CHANGE_ORDER" for issue in result.issues)
+
+
 def test_heading_alone_is_not_success(offline):
     result = extract(text="CHANGE ORDER", options=offline)
     assert result.status == "failed"
