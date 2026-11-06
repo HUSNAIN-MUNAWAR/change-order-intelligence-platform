@@ -78,50 +78,71 @@ The system reads native text when available and falls back to local Tesseract OC
 
 The browser is a presentation layer over a thin FastAPI transport. The Python package remains the single source of truth for document ingestion, OCR, extraction, validation, confidence, provenance and serialization.
 
+Each diagram below includes a committed PNG fallback. This keeps the README readable in GitHub, IDEs and Markdown viewers that do not execute Mermaid, while the Mermaid source remains available under each image.
+
 ### 5.1 High-level system architecture
 
-```mermaid
-flowchart LR
-    U[User] --> F[Next.js App Router frontend]
-    F --> A[FastAPI /api/v1]
-    A --> P[changeorder.pipeline.extract]
-    P --> R[readers.py]
-    R --> N[PyMuPDF native reader]
-    R --> O[Tesseract OCR when needed]
-    P --> E[extraction.py candidates]
-    P --> V[Pydantic validation and reconciliation]
-    V --> C[confidence.py]
-    V --> Q[provenance.py evidence]
-    P -. opt-in .-> L[Optional LLM adapter]
-    A --> J[Validated ExtractionResult JSON]
+![High-level system architecture](docs/images/architecture-system.png)
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
+graph LR
+    U[User] --> F[Next.js frontend]
+    F --> A[FastAPI API]
+    A --> P[Python extraction pipeline]
+    P --> R[Document readers]
+    R --> N[Native PDF text]
+    R --> O[Tesseract OCR]
+    P --> E[Candidate extraction]
+    P --> V[Validation and reconciliation]
+    V --> C[Confidence scoring]
+    V --> Q[Evidence provenance]
+    P -.-> L[Optional LLM]
+    A --> J[Validated JSON result]
     J --> F
 ```
+
+</details>
 
 The API does not create a competing field schema. It validates transport options, invokes the existing pipeline and returns the package response.
 
 ### 5.2 Component dependencies
 
-```mermaid
-flowchart TD
-    Main[backend.api.main] --> Services[backend.api.services]
-    Main --> Caps[backend.api.capabilities]
-    Services --> Pipeline[changeorder.pipeline]
-    Pipeline --> Readers[changeorder.readers]
-    Pipeline --> Extraction[changeorder.extraction]
-    Pipeline --> LLM[changeorder.llm_extractor]
-    Extraction --> Normalization[changeorder.normalization]
-    Extraction --> Provenance[changeorder.provenance]
-    Pipeline --> Validation[changeorder.validation]
-    Validation --> Confidence[changeorder.confidence]
-    Pipeline --> Schemas[changeorder.schemas]
-    Pipeline --> JSON[changeorder.jsonio]
-    Streamlit[streamlit_app.py] --> Demo[changeorder.demo]
+![Component dependencies](docs/images/architecture-components.png)
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
+graph TD
+    Main[API main] --> Services[API services]
+    Main --> Caps[Capabilities]
+    Services --> Pipeline[Extraction pipeline]
+    Pipeline --> Readers[Readers]
+    Pipeline --> Extraction[Candidate extraction]
+    Pipeline --> LLM[Optional LLM adapter]
+    Extraction --> Normalization[Normalization]
+    Extraction --> Provenance[Provenance]
+    Pipeline --> Validation[Validation]
+    Validation --> Confidence[Confidence]
+    Pipeline --> Schemas[Schema models]
+    Pipeline --> JSON[JSON serialization]
+    Streamlit[Streamlit app] --> Demo[Demo adapter]
     Demo --> Pipeline
 ```
 
+</details>
+
 ### 5.3 Extraction request sequence
 
-```mermaid
+![Extraction request sequence](docs/images/architecture-sequence.png)
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
 sequenceDiagram
     actor User
     participant UI as Next.js frontend
@@ -130,132 +151,127 @@ sequenceDiagram
     participant Reader as PDF/image/text reader
     participant OCR as Tesseract
     User->>UI: Select fixture or upload file
-    UI->>API: POST multipart /api/v1/extract
-    API->>API: Validate size, suffix, MIME and signature
-    API->>Engine: extract(temp_path, PipelineOptions)
-    Engine->>Reader: read_file()
+    UI->>API: Upload multipart document
+    API->>API: Validate request and file
+    API->>Engine: Start extraction pipeline
+    Engine->>Reader: Read document
     alt Native text is sufficient
         Reader-->>Engine: PageText(native)
     else Page is sparse/image-only
         Reader->>OCR: Render page and recognize locally
-        OCR-->>Reader: OCR text and word quality
-        Reader-->>Engine: PageText(ocr)
+        OCR-->>Reader: Text and word quality
+        Reader-->>Engine: OCR page text
     end
     Engine->>Engine: Generate candidates and reconcile conflicts
     Engine->>Engine: Validate types, consistency, confidence and evidence
     Engine-->>API: ExtractionResult
-    API-->>UI: Exact Decimal-safe JSON response
-    UI-->>User: Fields, warnings, evidence, preview and download
+    API-->>UI: Validated JSON response
+    UI-->>User: Fields, warnings, evidence and download
 ```
+
+</details>
 
 The LLM branch is opt-in and evidence-gated; a provider failure falls back to deterministic candidates.
 
 ### 5.4 Document data flow
 
-```mermaid
-flowchart LR
-    Bytes[Uploaded bytes] --> Bounds[Byte and content bounds]
-    Bounds --> Pages[PageText raw/cleaned blocks]
-    Pages --> Candidates[Label/title/table candidates]
-    Candidates --> Parsed[Typed values: Decimal/date/identifier]
-    Parsed --> Reconciled[Chosen value + alternatives]
-    Reconciled --> Validated[ExtractedField wrappers]
-    Validated --> Audited[Evidence + confidence + issues]
+![Document data flow](docs/images/architecture-data-flow.png)
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
+graph LR
+    Bytes[Uploaded bytes] --> Bounds[Input limits]
+    Bounds --> Pages[Page text blocks]
+    Pages --> Candidates[Label and table candidates]
+    Candidates --> Parsed[Typed values]
+    Parsed --> Reconciled[Chosen value and alternatives]
+    Reconciled --> Validated[Validated fields]
+    Validated --> Audited[Evidence confidence and issues]
     Audited --> Result[ExtractionResult JSON]
 ```
+
+</details>
 
 Source spans are created from the actual page-local text; coordinates are not invented.
 
 ### 5.5 Processing states
 
-```mermaid
-stateDiagram-v2
-    [*] --> Uploaded
-    Uploaded --> Reading
-    Reading --> OCRFallback: sparse/native text unavailable
-    Reading --> Extracting: usable text
-    OCRFallback --> Extracting: OCR text or recoverable warning
-    Reading --> Failed: unsupported/corrupt/limit error
-    OCRFallback --> Failed: OCR unavailable and no usable text
-    Extracting --> Validating
-    Validating --> Completed: no warnings/fatal issues
-    Validating --> PartialSuccess: warnings/conflicts/missing review fields
-    Validating --> Failed: no actionable change-order facts
+![Processing states](docs/images/architecture-states.png)
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
+graph TD
+    Uploaded[Uploaded] --> Reading[Reading]
+    Reading -->|usable text| Extracting[Extracting]
+    Reading -->|sparse text| OCRFallback[OCR fallback]
+    OCRFallback -->|OCR text or warning| Extracting
+    Reading -->|unsupported or corrupt| Failed[Failed]
+    OCRFallback -->|OCR unavailable| Failed
+    Extracting --> Validating[Validating]
+    Validating -->|no fatal issues| Completed[Completed]
+    Validating -->|warnings or conflicts| PartialSuccess[Partial success]
+    Validating -->|no actionable facts| Failed
 ```
+
+</details>
 
 The API reports the completed `ExtractionResult` status rather than fabricated percentage progress. The frontend shows upload, processing, complete and failed transport states.
 
 ### 5.6 Core models and module relationships
 
-```mermaid
-classDiagram
-    class ExtractionResult {
-      status
-      source
-      data
-      issues
-      missing_fields
-      processing_ms
-    }
-    class Source {
-      identifier
-      sha256
-      pages
-    }
-    class PageText {
-      page
-      raw_text
-      text_origin
-      ocr_quality
-    }
-    class ChangeOrder
-    class ExtractedField {
-      value
-      confidence
-      evidence
-      method
-      validation
-      alternatives
-    }
-    class Evidence {
-      source
-      page
-      line_span
-      char_span
-      text
-    }
-    ExtractionResult *-- Source
-    ExtractionResult *-- ChangeOrder
-    Source *-- PageText
-    ChangeOrder *-- ExtractedField
-    ExtractedField *-- Evidence
+![Core models and module relationships](docs/images/architecture-models.png)
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
+graph LR
+    Result[Extraction result] --> Source[Source]
+    Result --> Order[Change order]
+    Source --> Page[Page text]
+    Order --> Field[Extracted field]
+    Field --> Evidence[Evidence span]
+    Field --> Confidence[Confidence and validation]
 ```
+
+</details>
 
 The implementation types are Pydantic models in [`src/changeorder/schemas.py`](src/changeorder/schemas.py); the diagram shows the important relationships without duplicating every field.
 
 ### 5.7 Failure and fallback flow
 
-```mermaid
-flowchart TD
-    Input[Input] --> Format{Supported and within limits?}
-    Format -- no --> Error[Structured 4xx error or failed result]
-    Format -- yes --> Native{Usable native text?}
-    Native -- yes --> Extract[Deterministic candidate extraction]
-    Native -- no --> OCR{OCR available/enabled?}
-    OCR -- no --> Partial[Recoverable OCR warning or failed result]
-    OCR -- yes --> ExtractOCR[OCR candidates with quality penalty]
+![Failure and fallback flow](docs/images/architecture-failure.png)
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
+graph TD
+    Input[Input] --> Format{Supported and within limits}
+    Format -->|no| Error[Structured error]
+    Format -->|yes| Native{Usable native text}
+    Native -->|yes| Extract[Deterministic extraction]
+    Native -->|no| OCR{OCR available and enabled}
+    OCR -->|no| Partial[Warning or failed result]
+    OCR -->|yes| ExtractOCR[OCR extraction with quality penalty]
     ExtractOCR --> Extract
-    Extract --> Valid{Typed and evidence-backed?}
-    Valid -- no --> Partial
-    Valid -- yes --> Optional{LLM explicitly enabled?}
-    Optional -- no --> JSON[Validated JSON]
-    Optional -- yes --> Provider{Provider response valid and quoted?}
-    Provider -- no --> JSONFallback[Deterministic JSON + recoverable LLM issue]
-    Provider -- yes --> Merge[Evidence-gated candidate merge]
+    Extract --> Valid{Typed and evidence backed}
+    Valid -->|no| Partial
+    Valid -->|yes| Optional{LLM explicitly enabled}
+    Optional -->|no| JSON[Validated JSON]
+    Optional -->|yes| Provider{Provider response valid and quoted}
+    Provider -->|no| JSONFallback[Deterministic JSON with LLM warning]
+    Provider -->|yes| Merge[Evidence gated merge]
     Merge --> JSON
     JSONFallback --> Frontend[Frontend review]
     JSON --> Frontend
 ```
+
+</details>
 
 All failure paths preserve the distinction between unsupported input, recoverable processing warnings and fatal absence of actionable change-order facts.
 
@@ -392,23 +408,30 @@ OCR is local, optional and detected at runtime. Native PDF text is always prefer
 
 ### 14.1 OCR processing flow
 
-```mermaid
-flowchart TD
-    Input[PDF page or image] --> Native{Usable native text?}
-    Native -- yes --> NativeText[Keep native page text]
-    Native -- no --> Render[Render page at bounded resolution]
-    Render --> Orient[Honor EXIF/page orientation]
+![OCR processing flow](docs/images/ocr-flow.png)
+
+<details>
+<summary>Mermaid source</summary>
+
+```text
+graph TD
+    Input[PDF page or image] --> Native{Usable native text}
+    Native -->|yes| NativeText[Keep native page text]
+    Native -->|no| Render[Render at bounded resolution]
+    Render --> Orient[Honor page orientation]
     Orient --> Gray[Convert to grayscale]
-    Gray --> Contrast[Apply conservative autocontrast]
+    Gray --> Contrast[Apply conservative contrast]
     Contrast --> Tesseract[Run local Tesseract OCR]
-    Tesseract --> Words[Collect recognized words and confidence]
-    Words --> Lines[Reconstruct page-local text lines]
-    Lines --> PageText[Create PageText with text_origin=ocr]
+    Tesseract --> Words[Collect words and confidence]
+    Words --> Lines[Reconstruct page text lines]
+    Lines --> PageText[Create OCR page text]
     NativeText --> Candidates[Generate extraction candidates]
     PageText --> Candidates
     Candidates --> Quality[Apply OCR quality penalty and warnings]
     Quality --> Evidence[Preserve exact text evidence]
 ```
+
+</details>
 
 ### 14.2 What happens in practice
 
